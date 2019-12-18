@@ -1,5 +1,5 @@
 package com.project.probook.service;
 
-public class BookmarkTypeService {
+public class TypeService {
 
 }

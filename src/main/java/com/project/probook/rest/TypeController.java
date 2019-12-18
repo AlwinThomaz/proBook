@@ -1,5 +1,5 @@
 package com.project.probook.rest;
 
-public class BookmarkTypeController {
+public class TypeController {
 
 }
