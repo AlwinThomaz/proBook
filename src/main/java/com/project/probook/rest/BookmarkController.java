@@ -21,8 +21,14 @@ import com.project.probook.service.BookmarkService;
 @RestController
 public class BookmarkController {
 	
-	@Autowired
+	
 	private BookmarkService service;
+	
+	@Autowired
+	public BookmarkController(BookmarkService service) {
+		super();
+		this.service = service;
+	}
 	
 	
 	@PostMapping("/createBookmark")
@@ -31,13 +37,13 @@ public class BookmarkController {
 	}
 
 	@DeleteMapping("/deleteBookmark/{id}")
-	public void deleteBookmark(@PathVariable Long id) throws BookmarkNotFoundException {
-		this.service.deleteBookmark(id);
+	public void deleteBookmark(@PathVariable Long bookmarkId) throws BookmarkNotFoundException {
+		this.service.deleteBookmark(bookmarkId);
 	}
 	
 	@GetMapping("/getBookmark/{id}")
-	public Bookmark getBookmark(@PathVariable Long id) throws BookmarkNotFoundException {
-		return this.service.findBookmarkById(id);
+	public Bookmark getBookmark(@PathVariable Long bookmarkId) throws BookmarkNotFoundException {
+		return this.service.findBookmarkById(bookmarkId);
 	}
 
 	@GetMapping("/getAllBookmark")
@@ -46,8 +52,8 @@ public class BookmarkController {
 	}
 
 	@PutMapping("/updateBookmark")
-	public Bookmark updateBookmark(@PathParam("id") Long id, @RequestBody Bookmark bookmark) throws BookmarkNotFoundException {
-		return this.service.updateBookmark(bookmark, id);
+	public Bookmark updateBookmark(@PathParam("id") Long bookmarkId, @RequestBody Bookmark bookmark) throws BookmarkNotFoundException {
+		return this.service.updateBookmark(bookmark, bookmarkId);
 	}
 
 }

@@ -14,10 +14,10 @@ import com.project.probook.persistence.repo.BookmarkRepo;
 @Service
 public class BookmarkService {
 
-@Autowired
+
 private BookmarkRepo repo;
 	
-	
+@Autowired
 	public BookmarkService(BookmarkRepo repo) {
 		this.repo = repo;
 	}
@@ -27,16 +27,16 @@ private BookmarkRepo repo;
 		return this.repo.save(bookmark);
 	}
 	
-	public boolean deleteBookmark(Long id) throws BookmarkNotFoundException {
-		if (!this.repo.existsById(id)) {
+	public boolean deleteBookmark(Long bookmarkId) throws BookmarkNotFoundException {
+		if (!this.repo.existsById(bookmarkId)) {
 			throw new BookmarkNotFoundException();
 		}
-		this.repo.deleteById(id);
-		return this.repo.existsById(id);
+		this.repo.deleteById(bookmarkId);
+		return this.repo.existsById(bookmarkId);
 	}
 	
-	public Bookmark findBookmarkById(Long id) throws BookmarkNotFoundException {
-		return this.repo.findById(id).orElseThrow(
+	public Bookmark findBookmarkById(Long bookmarkId) throws BookmarkNotFoundException {
+		return this.repo.findById(bookmarkId).orElseThrow(
 				() -> new BookmarkNotFoundException());
 	}
 	
@@ -46,8 +46,8 @@ private BookmarkRepo repo;
 	}
 	
 
-	public Bookmark updateBookmark(Bookmark bookmark, Long id) throws BookmarkNotFoundException {
-		Bookmark toUpdate = findBookmarkById(id);
+	public Bookmark updateBookmark(Bookmark bookmark, Long bookmarkId) throws BookmarkNotFoundException {
+		Bookmark toUpdate = findBookmarkById(bookmarkId);
 		toUpdate.setName(bookmark.getName());
 		toUpdate.setDescription(bookmark.getDescription());
 		toUpdate.setUrl(bookmark.getUrl());
