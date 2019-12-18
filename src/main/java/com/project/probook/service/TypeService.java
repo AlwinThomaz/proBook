@@ -30,8 +30,8 @@ public class TypeService {
  		return this.repo.existsById(typeId);
  	}	
 
- 	public Type findTypeById(Long id) throws TypeNotFoundException {
- 		return this.repo.findById(id).orElseThrow(
+ 	public Type findTypeById(Long typeId) throws TypeNotFoundException {
+ 		return this.repo.findById(typeId).orElseThrow(
  				() -> new TypeNotFoundException());
  	}
 
@@ -39,8 +39,8 @@ public class TypeService {
  		return this.repo.findAll();
  	}
 
- 	public Type updateType(Type type, Long id) throws TypeNotFoundException {
- 		Type toUpdate = findTypeById(id);
+ 	public Type updateType(Type type, Long typeId) throws TypeNotFoundException {
+ 		Type toUpdate = findTypeById(typeId);
  		toUpdate.setName(type.getName());
  		return this.repo.save(toUpdate);
  	}

@@ -27,18 +27,18 @@ public class TypeController {
  		this.service = service;
  	}
  	@PostMapping("/createType")
- 	public Type createType(@RequestBody Type typeToAdd) {
- 		return this.service.createType(typeToAdd);
+ 	public Type createType(@RequestBody Type type) {
+ 		return this.service.createType(type);
  	}
 
  	@DeleteMapping("/deleteType/{id}")
- 	public void deleteProject(@PathVariable Long id) throws TypeNotFoundException {
- 		this.service.deleteType(id);
+ 	public void deleteType(@PathVariable Long typeId) throws TypeNotFoundException {
+ 		this.service.deleteType(typeId);
  	}
 
  	@GetMapping("/getType/{id}")
- 	public Type getType(@PathVariable Long id) throws TypeNotFoundException {
- 		return this.service.findTypeById(id);
+ 	public Type getType(@PathVariable Long typeId) throws TypeNotFoundException {
+ 		return this.service.findTypeById(typeId);
  	}
 
  	@GetMapping("/getAllTypes")
@@ -47,8 +47,8 @@ public class TypeController {
  	}
 
  	@PutMapping("/updateType")
- 	public Type updateType(@PathParam("id") Long id, @RequestBody Type type) throws TypeNotFoundException {
- 		return this.service.updateType(type, id);
+ 	public Type updateType(@PathParam("id") Long typeId, @RequestBody Type type) throws TypeNotFoundException {
+ 		return this.service.updateType(type, typeId);
  	}
 
  }
