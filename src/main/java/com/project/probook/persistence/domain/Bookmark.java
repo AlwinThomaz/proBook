@@ -12,7 +12,7 @@ public class Bookmark {
 	@GeneratedValue
 	private long bookmarkId;
 	
-	@Column(name = "Boomark_Name",length=50, nullable=false, unique=false)
+	@Column(name = "Name",length=50, nullable=false, unique=false)
 	private String name;
 	@Column(name = "Description", length=200, nullable=false, unique=false)
 	private String description;
