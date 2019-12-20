@@ -11,26 +11,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.probook.exceptions.BookmarkNotFoundException;
 import com.project.probook.persistence.domain.Bookmark;
 import com.project.probook.service.BookmarkService;
 
-
 @RestController
+@RequestMapping("/bookmark")
 public class BookmarkController {
-	
-	
+
 	private BookmarkService service;
-	
+
 	@Autowired
 	public BookmarkController(BookmarkService service) {
 		super();
 		this.service = service;
 	}
-	
-	
+
 	@PostMapping("/createBookmark")
 	public Bookmark createBookmark(@RequestBody Bookmark bookmark) {
 		return this.service.createBookmark(bookmark);
@@ -40,21 +39,21 @@ public class BookmarkController {
 	public void deleteBookmark(@PathVariable Long bookmarkId) throws BookmarkNotFoundException {
 		this.service.deleteBookmark(bookmarkId);
 	}
-	
+
 	@GetMapping("/getBookmark/{id}")
 	public Bookmark getBookmark(@PathVariable Long bookmarkId) throws BookmarkNotFoundException {
 		return this.service.findBookmarkById(bookmarkId);
 	}
 
-	@GetMapping("/getAllBookmark")
+	@GetMapping("/getAllBookmarks")
 	public List<Bookmark> getAllBookmarks() {
 		return this.service.readBookmarks();
 	}
 
 	@PutMapping("/updateBookmark")
-	public Bookmark updateBookmark(@PathParam("id") Long bookmarkId, @RequestBody Bookmark bookmark) throws BookmarkNotFoundException {
+	public Bookmark updateBookmark(@PathParam("id") Long bookmarkId, @RequestBody Bookmark bookmark)
+			throws BookmarkNotFoundException {
 		return this.service.updateBookmark(bookmark, bookmarkId);
 	}
 
 }
-
