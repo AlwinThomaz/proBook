@@ -24,15 +24,15 @@ public class Type {
 
 	@OneToMany
 	private List<Bookmark> bookmarks;
+	
+	public Type() {
+
+	}
 
 	public Type(String name, Bookmark... bookmarks) {
 		super();
 		this.name = name;
 		this.bookmarks = Arrays.asList(bookmarks);
-
-	}
-
-	public Type() {
 
 	}
 

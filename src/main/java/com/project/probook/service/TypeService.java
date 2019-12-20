@@ -6,50 +6,56 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.probook.exceptions.TypeNotFoundException;
+import com.project.probook.persistence.domain.Bookmark;
 import com.project.probook.persistence.domain.Type;
 import com.project.probook.persistence.repo.TypeRepo;
 
+
 @Service
 public class TypeService {
+
 	private TypeRepo repo;
 
- 	@Autowired
- 	public TypeService(TypeRepo repo) {
- 		this.repo = repo;
- 	}
+	private BookmarkService bookmarkService;
 
- 	public Type createType(Type type) {
- 		return this.repo.save(type);
- 	}
+	@Autowired
+	public TypeService(TypeRepo repo, BookmarkService bookmarkService) {
+		this.repo = repo;
+		this.bookmarkService = bookmarkService;
+	}
 
- 	public boolean deleteType(Long typeId) throws TypeNotFoundException {
- 		if (!this.repo.existsById(typeId)) {
- 			throw new TypeNotFoundException();
- 		}
- 		this.repo.deleteById(typeId);
- 		return this.repo.existsById(typeId);
- 	}	
+	public Type createType(Type type) {
+		return this.repo.save(type);
+	}
 
- 	public Type findTypeById(Long typeId) throws TypeNotFoundException {
- 		return this.repo.findById(typeId).orElseThrow(
- 				() -> new TypeNotFoundException());
- 	}
+	public boolean deleteType(Long typeId) throws TypeNotFoundException {
+		if (!this.repo.existsById(typeId)) {
+			throw new TypeNotFoundException();
+		}
+		this.repo.deleteById(typeId);
+		return this.repo.existsById(typeId);
+	}
 
- 	public List<Type> readTypes() {
- 		return this.repo.findAll();
- 	}
+	public Type findTypeById(Long typeId) throws TypeNotFoundException {
+		return this.repo.findById(typeId).orElseThrow(() -> new TypeNotFoundException());
+	}
 
- 	public Type updateType(Type type, Long typeId) throws TypeNotFoundException {
- 		Type toUpdate = findTypeById(typeId);
- 		toUpdate.setName(type.getName());
- 		return this.repo.save(toUpdate);
- 	}
+	public List<Type> readTypes() {
+		return this.repo.findAll();
+	}
 
- 	public List<Type> getAllTypes() {
+	public Type updateType(Type type, Long typeId) throws TypeNotFoundException {
+		Type toUpdate = findTypeById(typeId);
+		toUpdate.setName(type.getName());
+		return this.repo.save(toUpdate);
+	}
+	
+	public Type addBookmarkToType(Long typeId, Bookmark bookmark) throws TypeNotFoundException {
+		Type toUpdate = findTypeById(typeId);
+		Bookmark newBookmark = this.bookmarkService.createBookmark(bookmark);
+		toUpdate.getBookmarks().add(bookmark);
+		return this.repo.saveAndFlush(toUpdate);
+	}
 
- 			return this.repo.findAll();
 
- 	}
-
- }
-
+}
