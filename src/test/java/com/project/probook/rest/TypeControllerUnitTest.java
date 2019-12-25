@@ -74,26 +74,26 @@ public class TypeControllerUnitTest {
 
 		assertEquals(updatedType, this.controller.updateType(this.typeId, newType));
 
-		verify(this.service, times(1)).updatetype(newType, this.typeId);
+		verify(this.service, times(1)).updateType(newType, this.typeId);
 	}
 
 	@Test
-	public void findProjectsByIDTest() throws ProjectNotFoundException {
-		when(this.service.findProjectById(this.id)).thenReturn(this.testProjectWithID);
+	public void findTypesByIDTest() throws TypeNotFoundException {
+		when(this.service.findTypeById(this.typeId)).thenReturn(this.testTypeWithTypeId);
 
-		assertEquals(this.testProjectWithID, this.controller.getProject(this.id));
+		assertEquals(this.testTypeWithTypeId, this.controller.getType(this.typeId));
 
-		verify(this.service, times(1)).findProjectById(this.id);
+		verify(this.service, times(1)).findTypeById(this.typeId);
 	}
 
 	@Test
-	public void getAllProjectsTest() {
+	public void getAllTypesTest() {
 
-		when(service.getAllProjects()).thenReturn(this.projectList);
+		when(service.readTypes()).thenReturn(this.typeList);
 
-		assertFalse("Controller has found no projects", this.controller.getAllProjects().isEmpty());
+		assertFalse("Controller has found no types", this.controller.getAllTypes().isEmpty());
 
-		verify(service, times(1)).getAllProjects();
+		verify(service, times(1)).readTypes();
 	}
 
 }

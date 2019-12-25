@@ -68,21 +68,6 @@ public class TypeServiceUnitTest {
 	}
 	
 	@Test
-	public void updateTypeTest() throws TypeNotFoundException {
-		Type newType = new Type("Community Forums");
-		Type updatedType = new Type(newType.getName());
-		updatedType.setTypeId(this.typeId);
-		
-		when(this.repo.findById(this.typeId)).thenReturn(Optional.of(this.testTypeWithTypeId));
-		when(this.repo.save(updatedType)).thenReturn(updatedType);
-		
-		assertEquals(updatedType, this.service.updateType(updatedType, this.typeId));
-		
-		verify(this.repo, times(1)).findById(1L);
-		verify(this.repo, times(1)).save(updatedType);
-	}
-	
-	@Test
 	public void findTypesByIDTest() throws TypeNotFoundException {
 		when(this.repo.findById(typeId)).thenReturn(Optional.of(this.testTypeWithTypeId));
 		
@@ -98,6 +83,21 @@ public class TypeServiceUnitTest {
 		assertFalse("Controller has found no types", this.service.readTypes().isEmpty());
 		
 		verify(repo, times(1)).findAll();
+	}
+	
+	@Test
+	public void updateTypeTest() throws TypeNotFoundException {
+		Type newType = new Type("Community Forums");
+		Type updatedType = new Type(newType.getName());
+		updatedType.setTypeId(this.typeId);
+		
+		when(this.repo.findById(this.typeId)).thenReturn(Optional.of(this.testTypeWithTypeId));
+		when(this.repo.save(updatedType)).thenReturn(updatedType);
+		
+		assertEquals(updatedType, this.service.updateType(updatedType, this.typeId));
+		
+		verify(this.repo, times(1)).findById(1L);
+		verify(this.repo, times(1)).save(updatedType);
 	}
 	
 }

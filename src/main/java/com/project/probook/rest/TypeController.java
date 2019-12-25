@@ -40,12 +40,12 @@ public class TypeController {
 		return this.service.createType(bookmark);
 	}
 
-	@DeleteMapping("/deleteType/{id}")
+	@DeleteMapping("/deleteType/{typeId}")
 	public void deleteType(@PathVariable Long typeId) throws TypeNotFoundException {
 		this.service.deleteType(typeId);
 	}
 
-	@GetMapping("/getType/{id}")
+	@GetMapping("/getType/{typeId}")
 	public Type getType(@PathVariable Long typeId) throws TypeNotFoundException {
 		return this.service.findTypeById(typeId);
 	}
@@ -56,13 +56,13 @@ public class TypeController {
 	}
 
 	@PutMapping("/updateType")
-	public Type updateType(@PathParam("id") Long typeId, @RequestBody Type type) throws TypeNotFoundException {
+	public Type updateType(@PathParam("typeId") Long typeId, @RequestBody Type type) throws TypeNotFoundException {
 		return this.service.updateType(type, typeId);
 	}
 	
-	@PatchMapping("/update/{id}")
-	public Type addBookmarkToType(@PathVariable Long id, @RequestBody Bookmark bookmark) throws TypeNotFoundException {
-		return this.service.addBookmarkToType(id, bookmark);
+	@PatchMapping("/update/{typeId}")
+	public Type addBookmarkToType(@PathVariable Long typeId, @RequestBody Bookmark bookmark) throws TypeNotFoundException {
+		return this.service.addBookmarkToType(typeId, bookmark);
 	}
 	
 
