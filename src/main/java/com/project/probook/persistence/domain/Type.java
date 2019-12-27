@@ -59,4 +59,44 @@ public class Type {
 	public void setBookmarks(List<Bookmark> bookmarks) {
 		this.bookmarks = bookmarks;
 	}
+
+	@Override
+	public String toString() {
+		return "Type [typeId=" + typeId + ", name=" + name + ", bookmarks=" + bookmarks + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((bookmarks == null) ? 0 : bookmarks.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + (int) (typeId ^ (typeId >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Type other = (Type) obj;
+		if (bookmarks == null) {
+			if (other.bookmarks != null)
+				return false;
+		} else if (!bookmarks.equals(other.bookmarks))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (typeId != other.typeId)
+			return false;
+		return true;
+	}
+	
 }
