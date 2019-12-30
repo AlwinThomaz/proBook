@@ -35,45 +35,45 @@ public class TypeServiceUnitTest {
 	
 	private Type testType;
 	
-	private Type testTypeWithTypeId;
+	private Type testTypeWithId;
 	
-	final long typeId = 1L;
+	final long id = 1L;
 	
 	@Before
 	public void init() {
 		this.typeList = new ArrayList<>();
 		this.typeList.add(testType);
 		this.testType = new Type("Software tools");
-		this.testTypeWithTypeId = new Type(testType.getName());
-		this.testTypeWithTypeId.setTypeId(typeId);
+		this.testTypeWithId = new Type(testType.getName());
+		this.testTypeWithId.setId(id);
 	}
 	
 	@Test
 	public void createTypeTest() {
-		when(this.repo.save(testType)).thenReturn(testTypeWithTypeId);
+		when(this.repo.save(testType)).thenReturn(testTypeWithId);
 		
-		assertEquals(this.testTypeWithTypeId, this.service.createType(testType));
+		assertEquals(this.testTypeWithId, this.service.createType(testType));
 		
 		verify(this.repo, times(1)).save(this.testType);
 	}
 		
 	@Test
 	public void deleteTypeTest() throws TypeNotFoundException {
-		when(this.repo.existsById(typeId)).thenReturn(true, false);
+		when(this.repo.existsById(id)).thenReturn(true, false);
 		
-		this.service.deleteType(typeId);
+		this.service.deleteType(id);
 		
-		verify(this.repo, times(1)).deleteById(typeId);
-		verify(this.repo, times(2)).existsById(typeId);
+		verify(this.repo, times(1)).deleteById(id);
+		verify(this.repo, times(2)).existsById(id);
 	}
 	
 	@Test
 	public void findTypesByIDTest() throws TypeNotFoundException {
-		when(this.repo.findById(typeId)).thenReturn(Optional.of(this.testTypeWithTypeId));
+		when(this.repo.findById(id)).thenReturn(Optional.of(this.testTypeWithId));
 		
-		assertEquals(this.testTypeWithTypeId, this.service.findTypeById(this.typeId));
+		assertEquals(this.testTypeWithId, this.service.findTypeById(this.id));
 		
-		verify(this.repo, times(1)).findById(this.typeId);
+		verify(this.repo, times(1)).findById(this.id);
 	}
 	
 	@Test
@@ -89,12 +89,12 @@ public class TypeServiceUnitTest {
 	public void updateTypeTest() throws TypeNotFoundException {
 		Type newType = new Type("Community Forums");
 		Type updatedType = new Type(newType.getName());
-		updatedType.setTypeId(this.typeId);
+		updatedType.setId(this.id);
 		
-		when(this.repo.findById(this.typeId)).thenReturn(Optional.of(this.testTypeWithTypeId));
+		when(this.repo.findById(this.id)).thenReturn(Optional.of(this.testTypeWithId));
 		when(this.repo.save(updatedType)).thenReturn(updatedType);
 		
-		assertEquals(updatedType, this.service.updateType(updatedType, this.typeId));
+		assertEquals(updatedType, this.service.updateType(updatedType, this.id));
 		
 		verify(this.repo, times(1)).findById(1L);
 		verify(this.repo, times(1)).save(updatedType);

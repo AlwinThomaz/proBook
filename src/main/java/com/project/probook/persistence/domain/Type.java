@@ -17,7 +17,7 @@ public class Type {
 	
 	@Id
 	@GeneratedValue
-	private long typeId;
+	private long id;
 
 	
 	private String name;
@@ -36,12 +36,12 @@ public class Type {
 
 	}
 
-	public long getTypeId() {
-		return typeId;
+	public long getId() {
+		return id;
 	}
 
-	public void setTypeId(long typeId) {
-		this.typeId = typeId;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -62,7 +62,7 @@ public class Type {
 
 	@Override
 	public String toString() {
-		return "Type [typeId=" + typeId + ", name=" + name + ", bookmarks=" + bookmarks + "]";
+		return "Type [id=" + id + ", name=" + name + ", bookmarks=" + bookmarks + "]";
 	}
 
 	@Override
@@ -71,7 +71,7 @@ public class Type {
 		int result = 1;
 		result = prime * result + ((bookmarks == null) ? 0 : bookmarks.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + (int) (typeId ^ (typeId >>> 32));
+		result = prime * result + (int) (id ^ (id >>> 32));
 		return result;
 	}
 
@@ -94,7 +94,7 @@ public class Type {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (typeId != other.typeId)
+		if (id != other.id)
 			return false;
 		return true;
 	}

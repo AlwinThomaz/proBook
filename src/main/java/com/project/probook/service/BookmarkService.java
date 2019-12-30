@@ -23,24 +23,24 @@ public class BookmarkService {
 		return this.repo.save(bookmark);
 	}
 
-	public boolean deleteBookmark(Long bookmarkId) throws BookmarkNotFoundException {
-		if (!this.repo.existsById(bookmarkId)) {
+	public boolean deleteBookmark(Long id) throws BookmarkNotFoundException {
+		if (!this.repo.existsById(id)) {
 			throw new BookmarkNotFoundException();
 		}
-		this.repo.deleteById(bookmarkId);
-		return this.repo.existsById(bookmarkId);
+		this.repo.deleteById(id);
+		return this.repo.existsById(id);
 	}
 
-	public Bookmark findBookmarkById(Long bookmarkId) throws BookmarkNotFoundException {
-		return this.repo.findById(bookmarkId).orElseThrow(() -> new BookmarkNotFoundException());
+	public Bookmark findBookmarkById(Long id) throws BookmarkNotFoundException {
+		return this.repo.findById(id).orElseThrow(() -> new BookmarkNotFoundException());
 	}
 
 	public List<Bookmark> readBookmarks() {
 		return this.repo.findAll();
 	}
 
-	public Bookmark updateBookmark(Bookmark bookmark, Long bookmarkId) throws BookmarkNotFoundException {
-		Bookmark toUpdate = findBookmarkById(bookmarkId);
+	public Bookmark updateBookmark(Bookmark bookmark, Long id) throws BookmarkNotFoundException {
+		Bookmark toUpdate = findBookmarkById(id);
 		toUpdate.setName(bookmark.getName());
 		toUpdate.setDescription(bookmark.getDescription());
 		toUpdate.setUrl(bookmark.getUrl());
@@ -48,4 +48,3 @@ public class BookmarkService {
 	}
 
 }
-
