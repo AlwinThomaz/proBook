@@ -35,9 +35,9 @@ public class BookmarkServiceUnitTest {
 	
 	private Bookmark testBookmark;
 	
-	private Bookmark testBookmarkWithBookmarkId;
+	private Bookmark testBookmarkWithId;
 	
-	final long bookmarkId = 1L;
+	final long id = 1L;
 	
 	
 	@Before
@@ -45,36 +45,36 @@ public class BookmarkServiceUnitTest {
 		this.bookmarkList = new ArrayList<>();
 		this.bookmarkList.add(testBookmark);
 		this.testBookmark = new Bookmark("Freecodecamp", "Place to discuss and learn coding", "https://www.freecodecamp.org");
-		this.testBookmarkWithBookmarkId = new Bookmark(testBookmark.getName(), testBookmark.getDescription(), testBookmark.getUrl());
-		this.testBookmarkWithBookmarkId.setBookmarkId(bookmarkId);		
+		this.testBookmarkWithId = new Bookmark(testBookmark.getName(), testBookmark.getDescription(), testBookmark.getUrl());
+		this.testBookmarkWithId.setId(id);		
 	}
 	
 	@Test
 	public void createBookmarkTest() {
-		when(this.repo.save(testBookmark)).thenReturn(testBookmarkWithBookmarkId);
+		when(this.repo.save(testBookmark)).thenReturn(testBookmarkWithId);
 		
-		assertEquals(this.testBookmarkWithBookmarkId, this.service.createBookmark(testBookmark));
+		assertEquals(this.testBookmarkWithId, this.service.createBookmark(testBookmark));
 		
 		verify(this.repo, times(1)).save(this.testBookmark);
 	}
 		
 	@Test
 	public void deleteBookmarkTest() throws BookmarkNotFoundException {
-		when(this.repo.existsById(bookmarkId)).thenReturn(true, false);
+		when(this.repo.existsById(id)).thenReturn(true, false);
 		
-		this.service.deleteBookmark(bookmarkId);
+		this.service.deleteBookmark(id);
 		
-		verify(this.repo, times(1)).deleteById(bookmarkId);
-		verify(this.repo, times(2)).existsById(bookmarkId);
+		verify(this.repo, times(1)).deleteById(id);
+		verify(this.repo, times(2)).existsById(id);
 	}
 	
 	@Test
-	public void findBookmarksByIDTest() throws BookmarkNotFoundException {
-		when(this.repo.findById(bookmarkId)).thenReturn(Optional.of(this.testBookmarkWithBookmarkId));
+	public void findBookmarksByIdTest() throws BookmarkNotFoundException {
+		when(this.repo.findById(id)).thenReturn(Optional.of(this.testBookmarkWithId));
 		
-		assertEquals(this.testBookmarkWithBookmarkId, this.service.findBookmarkById(this.bookmarkId));
+		assertEquals(this.testBookmarkWithId, this.service.findBookmarkById(this.id));
 		
-		verify(this.repo, times(1)).findById(this.bookmarkId);
+		verify(this.repo, times(1)).findById(this.id);
 	}
 	
 	@Test
@@ -90,12 +90,12 @@ public class BookmarkServiceUnitTest {
 	public void updateBookmarkTest() throws BookmarkNotFoundException {
 		Bookmark newBookmark = new Bookmark("Udemy", "Java online course", "https://www.udemy.com/topic/java/");
 		Bookmark updatedBookmark = new Bookmark(newBookmark.getName(), newBookmark.getDescription(), newBookmark.getUrl());
-		updatedBookmark.setBookmarkId(this.bookmarkId);
+		updatedBookmark.setId(this.id);
 		
-		when(this.repo.findById(this.bookmarkId)).thenReturn(Optional.of(this.testBookmarkWithBookmarkId));
+		when(this.repo.findById(this.id)).thenReturn(Optional.of(this.testBookmarkWithId));
 		when(this.repo.save(updatedBookmark)).thenReturn(updatedBookmark);
 		
-		assertEquals(updatedBookmark, this.service.updateBookmark(updatedBookmark, this.bookmarkId));
+		assertEquals(updatedBookmark, this.service.updateBookmark(updatedBookmark, this.id));
 		
 		verify(this.repo, times(1)).findById(1L);
 		verify(this.repo, times(1)).save(updatedBookmark);

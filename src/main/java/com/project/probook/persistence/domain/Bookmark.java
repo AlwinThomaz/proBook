@@ -10,7 +10,7 @@ public class Bookmark {
 	
 	@Id
 	@GeneratedValue
-	private long bookmarkId;
+	private long id;
 	
 	@Column(name = "Bookmark_Name", unique = true)
 	private String name;
@@ -30,12 +30,12 @@ public class Bookmark {
 		
 	}
 
-	public long getBookmarkId() {
-		return bookmarkId;
+	public long getId() {
+		return id;
 	}
 
-	public void setBookmarkId(long bookmarkId) {
-		this.bookmarkId = bookmarkId;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -64,7 +64,7 @@ public class Bookmark {
 
 	@Override
 	public String toString() {
-		return "Bookmark [bookmarkId=" + bookmarkId + ", name=" + name + ", description=" + description + ", url=" + url
+		return "Bookmark [id=" + id + ", name=" + name + ", description=" + description + ", url=" + url
 				+ "]";
 	}
 
@@ -72,7 +72,7 @@ public class Bookmark {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (bookmarkId ^ (bookmarkId >>> 32));
+		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((url == null) ? 0 : url.hashCode());
@@ -88,7 +88,7 @@ public class Bookmark {
 		if (getClass() != obj.getClass())
 			return false;
 		Bookmark other = (Bookmark) obj;
-		if (bookmarkId != other.bookmarkId)
+		if (id != other.id)
 			return false;
 		if (description == null) {
 			if (other.description != null)

@@ -28,30 +28,30 @@ public class TypeService {
 		return this.repo.save(type);
 	}
 
-	public boolean deleteType(Long typeId) throws TypeNotFoundException {
-		if (!this.repo.existsById(typeId)) {
+	public boolean deleteType(Long id) throws TypeNotFoundException {
+		if (!this.repo.existsById(id)) {
 			throw new TypeNotFoundException();
 		}
-		this.repo.deleteById(typeId);
-		return this.repo.existsById(typeId);
+		this.repo.deleteById(id);
+		return this.repo.existsById(id);
 	}
 
-	public Type findTypeById(Long typeId) throws TypeNotFoundException {
-		return this.repo.findById(typeId).orElseThrow(() -> new TypeNotFoundException());
+	public Type findTypeById(Long id) throws TypeNotFoundException {
+		return this.repo.findById(id).orElseThrow(() -> new TypeNotFoundException());
 	}
 
 	public List<Type> readTypes() {
 		return this.repo.findAll();
 	}
 
-	public Type updateType(Type type, Long typeId) throws TypeNotFoundException {
-		Type toUpdate = findTypeById(typeId);
+	public Type updateType(Type type, Long id) throws TypeNotFoundException {
+		Type toUpdate = findTypeById(id);
 		toUpdate.setName(type.getName());
 		return this.repo.save(toUpdate);
 	}
 	
-	public Type addBookmarkToType(Long typeId, Bookmark bookmark) throws TypeNotFoundException {
-		Type toUpdate = findTypeById(typeId);
+	public Type addBookmarkToType(Long id, Bookmark bookmark) throws TypeNotFoundException {
+		Type toUpdate = findTypeById(id);
 		Bookmark newBookmark = this.bookmarkService.createBookmark(bookmark);
 		toUpdate.getBookmarks().add(bookmark);
 		return this.repo.saveAndFlush(toUpdate);

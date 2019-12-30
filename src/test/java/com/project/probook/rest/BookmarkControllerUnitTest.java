@@ -35,33 +35,33 @@ public class BookmarkControllerUnitTest {
 
 	private Bookmark testBookmark;
 
-	private Bookmark testBookmarkWithBookmarkId;
+	private Bookmark testBookmarkWithId;
 
-	final long bookmarkId = 1L;
+	final long id = 1L;
 	
 	@Before
 	public void init() {
 		this.bookmarkList = new ArrayList<>();
 		this.bookmarkList.add(testBookmark);
 		this.testBookmark = new Bookmark("Freecodecamp", "Place to discuss and learn coding", "https://www.freecodecamp.org");
-		this.testBookmarkWithBookmarkId = new Bookmark(testBookmark.getName(), testBookmark.getDescription(), testBookmark.getUrl());
-		this.testBookmarkWithBookmarkId.setBookmarkId(bookmarkId);		
+		this.testBookmarkWithId = new Bookmark(testBookmark.getName(), testBookmark.getDescription(), testBookmark.getUrl());
+		this.testBookmarkWithId.setId(id);		
 	}
 
 	@Test
 	public void createBookmarkTest() {
-		when(this.service.createBookmark(testBookmark)).thenReturn(testBookmarkWithBookmarkId);
+		when(this.service.createBookmark(testBookmark)).thenReturn(testBookmarkWithId);
 
-		assertEquals(this.testBookmarkWithBookmarkId, this.controller.createBookmark(testBookmark));
+		assertEquals(this.testBookmarkWithId, this.controller.createBookmark(testBookmark));
 
 		verify(this.service, times(1)).createBookmark(this.testBookmark);
 	}
 
 	@Test
 	public void deleteBookmarkTest() throws BookmarkNotFoundException {
-		this.controller.deleteBookmark(bookmarkId);
+		this.controller.deleteBookmark(id);
 
-		verify(this.service, times(1)).deleteBookmark(bookmarkId);
+		verify(this.service, times(1)).deleteBookmark(id);
 	}
 	
 	@Test
@@ -69,22 +69,22 @@ public class BookmarkControllerUnitTest {
 		
 		Bookmark newBookmark = new Bookmark("Udemy", "Java online course", "https://www.udemy.com/topic/java/");
 		Bookmark updatedBookmark = new Bookmark(newBookmark.getName(), newBookmark.getDescription(), newBookmark.getUrl());
-		updatedBookmark.setBookmarkId(this.bookmarkId);
+		updatedBookmark.setId(this.id);
 
-		when(this.service.updateBookmark(newBookmark, this.bookmarkId)).thenReturn(updatedBookmark);
+		when(this.service.updateBookmark(newBookmark, this.id)).thenReturn(updatedBookmark);
 
-		assertEquals(updatedBookmark, this.controller.updateBookmark(this.bookmarkId, newBookmark));
+		assertEquals(updatedBookmark, this.controller.updateBookmark(this.id, newBookmark));
 
-		verify(this.service, times(1)).updateBookmark(newBookmark, this.bookmarkId);
+		verify(this.service, times(1)).updateBookmark(newBookmark, this.id);
 	}
 
 	@Test
 	public void findBookmarksByIDTest() throws BookmarkNotFoundException {
-		when(this.service.findBookmarkById(this.bookmarkId)).thenReturn(this.testBookmarkWithBookmarkId);
+		when(this.service.findBookmarkById(this.id)).thenReturn(this.testBookmarkWithId);
 
-		assertEquals(this.testBookmarkWithBookmarkId, this.controller.getBookmark(this.bookmarkId));
+		assertEquals(this.testBookmarkWithId, this.controller.getBookmark(this.id));
 
-		verify(this.service, times(1)).findBookmarkById(this.bookmarkId);
+		verify(this.service, times(1)).findBookmarkById(this.id);
 	}
 
 	@Test

@@ -34,33 +34,33 @@ public class TypeControllerUnitTest {
 
 	private Type testType;
 
-	private Type testTypeWithTypeId;
+	private Type testTypeWithId;
 
-	final long typeId = 1L;
+	final long id = 1L;
 
 	@Before
 	public void init() {
 		this.typeList = new ArrayList<>();
 		this.typeList.add(testType);
 		this.testType = new Type("Software tools");
-		this.testTypeWithTypeId = new Type(testType.getName());
-		this.testTypeWithTypeId.setTypeId(typeId);
+		this.testTypeWithId = new Type(testType.getName());
+		this.testTypeWithId.setId(id);
 	}
 
 	@Test
 	public void createTypeTest() {
-		when(this.service.createType(testType)).thenReturn(testTypeWithTypeId);
+		when(this.service.createType(testType)).thenReturn(testTypeWithId);
 
-		assertEquals(this.testTypeWithTypeId, this.controller.createType(testType));
+		assertEquals(this.testTypeWithId, this.controller.createType(testType));
 
 		verify(this.service, times(1)).createType(this.testType);
 	}
 
 	@Test
 	public void deleteTypeTest() throws TypeNotFoundException {
-		this.controller.deleteType(typeId);
+		this.controller.deleteType(id);
 
-		verify(this.service, times(1)).deleteType(typeId);
+		verify(this.service, times(1)).deleteType(id);
 	}
 
 	@Test
@@ -68,22 +68,22 @@ public class TypeControllerUnitTest {
 
 		Type newType = new Type("Community Forums");
 		Type updatedType = new Type(newType.getName());
-		updatedType.setTypeId(this.typeId);
+		updatedType.setId(this.id);
 
-		when(this.service.updateType(newType, this.typeId)).thenReturn(updatedType);
+		when(this.service.updateType(newType, this.id)).thenReturn(updatedType);
 
-		assertEquals(updatedType, this.controller.updateType(this.typeId, newType));
+		assertEquals(updatedType, this.controller.updateType(this.id, newType));
 
-		verify(this.service, times(1)).updateType(newType, this.typeId);
+		verify(this.service, times(1)).updateType(newType, this.id);
 	}
 
 	@Test
-	public void findTypesByIDTest() throws TypeNotFoundException {
-		when(this.service.findTypeById(this.typeId)).thenReturn(this.testTypeWithTypeId);
+	public void findTypesByIdTest() throws TypeNotFoundException {
+		when(this.service.findTypeById(this.id)).thenReturn(this.testTypeWithId);
 
-		assertEquals(this.testTypeWithTypeId, this.controller.getType(this.typeId));
+		assertEquals(this.testTypeWithId, this.controller.getType(this.id));
 
-		verify(this.service, times(1)).findTypeById(this.typeId);
+		verify(this.service, times(1)).findTypeById(this.id);
 	}
 
 	@Test

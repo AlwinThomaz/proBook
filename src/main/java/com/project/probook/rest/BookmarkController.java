@@ -36,13 +36,13 @@ public class BookmarkController {
 	}
 
 	@DeleteMapping("/deleteBookmark/{id}")
-	public void deleteBookmark(@PathVariable Long bookmarkId) throws BookmarkNotFoundException {
-		this.service.deleteBookmark(bookmarkId);
+	public void deleteBookmark(@PathVariable Long id) throws BookmarkNotFoundException {
+		this.service.deleteBookmark(id);
 	}
 
 	@GetMapping("/getBookmark/{id}")
-	public Bookmark getBookmark(@PathVariable Long bookmarkId) throws BookmarkNotFoundException {
-		return this.service.findBookmarkById(bookmarkId);
+	public Bookmark getBookmark(@PathVariable Long id) throws BookmarkNotFoundException {
+		return this.service.findBookmarkById(id);
 	}
 
 	@GetMapping("/getAllBookmarks")
@@ -51,9 +51,9 @@ public class BookmarkController {
 	}
 
 	@PutMapping("/updateBookmark")
-	public Bookmark updateBookmark(@PathParam("id") Long bookmarkId, @RequestBody Bookmark bookmark)
+	public Bookmark updateBookmark(@PathParam("id") Long id, @RequestBody Bookmark bookmark)
 			throws BookmarkNotFoundException {
-		return this.service.updateBookmark(bookmark, bookmarkId);
+		return this.service.updateBookmark(bookmark, id);
 	}
 
 }
