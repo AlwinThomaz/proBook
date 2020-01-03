@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>proBook Add Bookmarks Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/add_bookmark.css">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md">
+        <a class="nav-link" href="index.html">proBook</a>
+        <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="main-navigation">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="add_bookmark.html">Add Bookmark</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="view_bookmark.html">View Bookmarks</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="view_type.html">View Types</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header header container-fluid">
+        <div class="overlay"></div>
+        <form action="#">
+
+            <header>
+                <h2>Add Bookmark</h2>
+            </header>
+
+            <div>
+                <label class="desc" id="title1" for="Field1">Name</label>
+                <div>
+                    <input id="Field1" name="Field1" type="text" class="field text fn" value="" size="8" tabindex="1">
+                </div>
+            </div>
+
+            <div>
+                <label class="desc" id="title3" for="Field3">
+                    URL
+                </label>
+                <div>
+                    <input id="Field3" name="Field3" type="url" spellcheck="false" value="" maxlength="255"
+                        tabindex="3">
+                </div>
+            </div>
+
+            <div>
+                <label class="desc" id="title4" for="Field4">
+                    Description
+                </label>
+
+                <div>
+                    <textarea id="Field4" name="Field4" type="description" spellcheck="true" rows="10" cols="50" tabindex="4"></textarea>
+                </div>
+            </div>
+
+            <div>
+                <label class="desc" id="title106" for="Field106">
+                    Select a Type
+                </label>
+                <div>
+                    <select id="Field106" name="Field106" class="field select medium" tabindex="11">
+                        <option value="First Choice">Software Tools</option>
+                        <option value="Second Choice">Programming Courses</option>
+                        <option value="Third Choice">Misc</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <label class="desc" id="title5" for="Field5">
+                    Create New Type
+                </label>
+                <div>
+                    <input id="Field5" name="Field5" type="type" spellcheck="false" value="" maxlength="255"
+                        tabindex="5">                    
+                </div>
+            </div>
+            <div>
+                <div>
+                    <input id="saveBookmark" name="saveForm" type="create" value="Create">
+                </div>
+            </div>
+            <br>
+            <br>
+            <div>
+                <div>
+                    <input id="saveBookmark" name="saveForm" type="submit" value="Submit">
+                </div>
+            </div>
+
+        </form>
+
+
+
+    </header>
+
+
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="scripts/add_bookmark.js"></script>
+</body>
+
+</html>
