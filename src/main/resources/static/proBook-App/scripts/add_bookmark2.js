@@ -1,3 +1,7 @@
+$(document).ready(function(){
+	$('.header').height($(window).height());
+})
+
 class Book {
     constructor(title, author, isbn) {
       this.title = title;
