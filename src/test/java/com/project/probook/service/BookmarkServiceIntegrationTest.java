@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.project.probook.exceptions.BookmarkDuplicateException;
+import com.project.probook.exceptions.BookmarkInvalidEntryException;
 import com.project.probook.exceptions.BookmarkNotFoundException;
 import com.project.probook.persistence.domain.Bookmark;
 import com.project.probook.persistence.repo.BookmarkRepo;
@@ -41,7 +43,7 @@ public class BookmarkServiceIntegrationTest {
 	}
 	
 	@Test
-	public void testCreateBookmark() {
+	public void testCreateBookmark() throws BookmarkInvalidEntryException, BookmarkDuplicateException {
 		assertEquals(this.testBookmarkWithId, this.service.createBookmark(testBookmark));
 	}
 

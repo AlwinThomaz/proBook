@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.probook.exceptions.BookmarkNotFoundException;
+import com.project.probook.exceptions.BookmarkDuplicateException;
+import com.project.probook.exceptions.BookmarkInvalidEntryException;
 import com.project.probook.persistence.domain.Bookmark;
 import com.project.probook.persistence.repo.BookmarkRepo;
 
@@ -19,10 +21,11 @@ public class BookmarkService {
 		this.repo = repo;
 	}
 
-	public Bookmark createBookmark(Bookmark bookmark) {
+	public Bookmark createBookmark(Bookmark bookmark) throws BookmarkInvalidEntryException, BookmarkDuplicateException {
+		validateBookmark(bookmark);
 		return this.repo.save(bookmark);
 	}
-
+	
 	public boolean deleteBookmark(Long id) throws BookmarkNotFoundException {
 		if (!this.repo.existsById(id)) {
 			throw new BookmarkNotFoundException();
@@ -34,6 +37,11 @@ public class BookmarkService {
 	public Bookmark findBookmarkById(Long id) throws BookmarkNotFoundException {
 		return this.repo.findById(id).orElseThrow(() -> new BookmarkNotFoundException());
 	}
+	
+	public boolean findRepeatedBookmark(Bookmark bookmark) {
+		return this.readBookmarks().contains(bookmark);
+	}
+
 
 	public List<Bookmark> readBookmarks() {
 		return this.repo.findAll();
@@ -45,6 +53,23 @@ public class BookmarkService {
 		toUpdate.setDescription(bookmark.getDescription());
 		toUpdate.setUrl(bookmark.getUrl());
 		return this.repo.save(toUpdate);
+	}
+	
+	public Boolean validateBookmark(Bookmark bookmark) throws BookmarkInvalidEntryException, BookmarkDuplicateException {
+		if (bookmark.getName().length() > 50) {
+			throw new BookmarkInvalidEntryException();
+		}
+		else if (findRepeatedBookmark(bookmark)) {
+			throw new BookmarkDuplicateException();
+		}
+		else if (bookmark.getDescription().length() > 250) {
+			throw new BookmarkInvalidEntryException();
+		}
+		else if (!(bookmark.getUrl().contains("http://") || bookmark.getUrl().contains("https://"))) {
+			throw new BookmarkInvalidEntryException();
+		}
+
+		return true;
 	}
 
 }

@@ -16,6 +16,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.project.probook.exceptions.BookmarkDuplicateException;
+import com.project.probook.exceptions.BookmarkInvalidEntryException;
+import com.project.probook.exceptions.TypeDuplicateException;
+import com.project.probook.exceptions.TypeInvalidEntryException;
 import com.project.probook.exceptions.TypeNotFoundException;
 import com.project.probook.persistence.domain.Bookmark;
 import com.project.probook.persistence.domain.Type;
@@ -36,7 +40,7 @@ public class TypeController {
 	}
 
 	@PostMapping("/createType")
-	public Type createType(@RequestBody Type bookmark) {
+	public Type createType(@RequestBody Type bookmark) throws TypeInvalidEntryException, TypeDuplicateException {
 		return this.service.createType(bookmark);
 	}
 
@@ -61,7 +65,7 @@ public class TypeController {
 	}
 	
 	@PatchMapping("/update/{id}")
-	public Type addBookmarkToType(@PathVariable Long id, @RequestBody Bookmark bookmark) throws TypeNotFoundException {
+	public Type addBookmarkToType(@PathVariable Long id, @RequestBody Bookmark bookmark) throws TypeNotFoundException, BookmarkInvalidEntryException, BookmarkDuplicateException {
 		return this.service.addBookmarkToType(id, bookmark);
 	}
 	

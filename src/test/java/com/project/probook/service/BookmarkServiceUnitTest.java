@@ -17,6 +17,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.project.probook.exceptions.BookmarkDuplicateException;
+import com.project.probook.exceptions.BookmarkInvalidEntryException;
 import com.project.probook.exceptions.BookmarkNotFoundException;
 import com.project.probook.persistence.domain.Bookmark;
 import com.project.probook.persistence.repo.BookmarkRepo;
@@ -50,7 +52,7 @@ public class BookmarkServiceUnitTest {
 	}
 	
 	@Test
-	public void createBookmarkTest() {
+	public void createBookmarkTest() throws BookmarkInvalidEntryException, BookmarkDuplicateException {
 		when(this.repo.save(testBookmark)).thenReturn(testBookmarkWithId);
 		
 		assertEquals(this.testBookmarkWithId, this.service.createBookmark(testBookmark));

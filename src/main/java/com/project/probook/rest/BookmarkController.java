@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.project.probook.exceptions.BookmarkDuplicateException;
+import com.project.probook.exceptions.BookmarkInvalidEntryException;
 import com.project.probook.exceptions.BookmarkNotFoundException;
 import com.project.probook.persistence.domain.Bookmark;
 import com.project.probook.service.BookmarkService;
@@ -31,7 +33,7 @@ public class BookmarkController {
 	}
 
 	@PostMapping("/createBookmark")
-	public Bookmark createBookmark(@RequestBody Bookmark bookmark) {
+	public Bookmark createBookmark(@RequestBody Bookmark bookmark) throws BookmarkInvalidEntryException, BookmarkDuplicateException {
 		return this.service.createBookmark(bookmark);
 	}
 

@@ -5,6 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.probook.exceptions.BookmarkDuplicateException;
+import com.project.probook.exceptions.BookmarkInvalidEntryException;
+import com.project.probook.exceptions.TypeDuplicateException;
+import com.project.probook.exceptions.TypeInvalidEntryException;
 import com.project.probook.exceptions.TypeNotFoundException;
 import com.project.probook.persistence.domain.Bookmark;
 import com.project.probook.persistence.domain.Type;
@@ -24,7 +28,8 @@ public class TypeService {
 		this.bookmarkService = bookmarkService;
 	}
 
-	public Type createType(Type type) {
+	public Type createType(Type type) throws TypeInvalidEntryException, TypeDuplicateException {
+		validateType(type);
 		return this.repo.save(type);
 	}
 
@@ -40,6 +45,10 @@ public class TypeService {
 		return this.repo.findById(id).orElseThrow(() -> new TypeNotFoundException());
 	}
 
+	public boolean findRepeatedType(Type type) {
+		return this.readTypes().contains(type);
+	}
+	
 	public List<Type> readTypes() {
 		return this.repo.findAll();
 	}
@@ -50,7 +59,17 @@ public class TypeService {
 		return this.repo.save(toUpdate);
 	}
 	
-	public Type addBookmarkToType(Long id, Bookmark bookmark) throws TypeNotFoundException {
+	public boolean validateType(Type type) throws TypeInvalidEntryException, TypeDuplicateException {
+		if (type.getName().length() > 50) {
+			throw new TypeInvalidEntryException();
+		} else if (findRepeatedType(type)) {
+			throw new TypeDuplicateException();
+		}
+		return true;
+		
+	}
+	
+	public Type addBookmarkToType(Long id, Bookmark bookmark) throws TypeNotFoundException, BookmarkInvalidEntryException, BookmarkDuplicateException {
 		Type toUpdate = findTypeById(id);
 		Bookmark newBookmark = this.bookmarkService.createBookmark(bookmark);
 		toUpdate.getBookmarks().add(bookmark);
