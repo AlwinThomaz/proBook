@@ -1,7 +1,9 @@
 package com.project.probook.service;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -39,15 +41,27 @@ public class TypeServiceUnitTest {
 	
 	private Type testTypeWithId;
 	
+	private Type testTypeFail;
+	
+	private Type testTypeFailWithId;
+	
 	final long id = 1L;
+	
+	private String name51 = "udsx6umwunzjz6s00fvc0jmlv26e8rj8k7cj5t2grg83h1nnblj";
 	
 	@Before
 	public void init() {
 		this.typeList = new ArrayList<>();
-		this.typeList.add(testType);
 		this.testType = new Type("Software tools");
 		this.testTypeWithId = new Type(testType.getName());
 		this.testTypeWithId.setId(id);
+		this.typeList.add(testType);
+		this.typeList.add(testType);
+		this.testTypeFail = new Type(testType.getName());
+		this.testTypeFail.setId(id);
+		this.testTypeFailWithId = new Type(testTypeFail.getName());
+		this.testTypeFailWithId.setId(id);
+		
 	}
 	
 	@Test
@@ -100,6 +114,32 @@ public class TypeServiceUnitTest {
 		
 		verify(this.repo, times(1)).findById(1L);
 		verify(this.repo, times(1)).save(updatedType);
+	}
+	
+	@Test
+	public void typeDuplicateTest() {
+		testTypeFail.setName("Software tools");
+		when(this.repo.findAll()).thenReturn(this.typeList);
+		assertTrue(this.service.findRepeatedType(this.testType));
+		assertFalse(this.service.findRepeatedType(this.testTypeFail));
+		verify(this.repo, times(2)).findAll();
+		}
+	
+	@Test
+	public void createTypeDuplicateTest() {
+		when(this.repo.findAll()).thenReturn(this.typeList);
+		assertThrows(TypeDuplicateException.class, () -> {
+			this.service.createType(this.testType);
+			verify(this.repo, times(1)).findAll();
+		});
+	}
+	
+	@Test
+	public void invalidNameTest() {
+		this.testTypeFail.setName(name51);
+		assertThrows(TypeInvalidEntryException.class, () -> {
+			this.service.createType(this.testTypeFail);
+		});
 	}
 	
 }
