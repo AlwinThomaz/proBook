@@ -19,9 +19,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.project.probook.exceptions.BookmarkDuplicateException;
+import com.project.probook.exceptions.BookmarkInvalidEntryException;
 import com.project.probook.exceptions.TypeDuplicateException;
 import com.project.probook.exceptions.TypeInvalidEntryException;
 import com.project.probook.exceptions.TypeNotFoundException;
+import com.project.probook.persistence.domain.Bookmark;
 import com.project.probook.persistence.domain.Type;
 import com.project.probook.persistence.repo.TypeRepo;
 
@@ -48,6 +51,12 @@ public class TypeServiceUnitTest {
 	final long id = 1L;
 	
 	private String name51 = "udsx6umwunzjz6s00fvc0jmlv26e8rj8k7cj5t2grg83h1nnblj";
+
+	private Bookmark testBookmark;
+	
+	private Bookmark testBookmarkWithId;
+
+	private List<Bookmark> bookmarkList;
 	
 	@Before
 	public void init() {
@@ -140,6 +149,24 @@ public class TypeServiceUnitTest {
 		assertThrows(TypeInvalidEntryException.class, () -> {
 			this.service.createType(this.testTypeFail);
 		});
+	}
+	
+	@Test
+	public void addBookmarkToTypeTest() throws TypeNotFoundException, BookmarkInvalidEntryException, BookmarkDuplicateException {
+		Type newType = new Type(this.testTypeWithId.getName());
+		newType.setId(this.id);
+		Bookmark newBookmark = new Bookmark("Udemy", "Java online course", "https://www.udemy.com/topic/java/");
+		newBookmark.setId(this.id);
+		newType.getBookmarks().add(newBookmark);
+		
+		when(this.repo.saveAndFlush(this.testTypeWithId)).thenReturn(this.testTypeWithId);
+		when(this.repo.findById(this.id)).thenReturn(Optional.of(this.testTypeWithId));
+		
+		assertEquals(newType, this.service.addBookmarkToType(this.id, newBookmark));
+		verify(this.repo, times(1)).findById(this.id);
+		verify(this.repo, times(1)).saveAndFlush(this.testTypeWithId);
+	
+		
 	}
 	
 }

@@ -88,12 +88,13 @@ public class Bookmark {
 		if (getClass() != obj.getClass())
 			return false;
 		Bookmark other = (Bookmark) obj;
-		if (id != other.id)
-			return false;
+//		if (id != other.id)
+//			return false;
 		if (description == null) {
 			if (other.description != null)
 				return false;
-		} else if (!description.equals(other.description))
+		} 
+		else if (!description.equals(other.description))
 			return false;
 		if (name == null) {
 			if (other.name != null)
