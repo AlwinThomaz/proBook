@@ -1,8 +1,9 @@
 package com.project.probook.rest;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+//import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +59,8 @@ public class BookmarkControllerIntegrationTest {
 				.perform(request(HttpMethod.POST, "/bookmark/createBookmark").contentType(MediaType.APPLICATION_JSON)
 						.content(this.mapper.writeValueAsString(testBookmark)).accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
-		testBookmarkWithId.setId(2);//TODO change id to that repo
+//		testBookmarkWithId = repo.th();//TODO change id to that repo
+		testBookmarkWithId.setId(testBookmarkWithId.getId()+1);
 		assertEquals(this.mapper.writeValueAsString(testBookmarkWithId), result);
 	}
 

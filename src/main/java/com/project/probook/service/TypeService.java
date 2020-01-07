@@ -72,7 +72,7 @@ public class TypeService {
 	public Type addBookmarkToType(Long id, Bookmark bookmark) throws TypeNotFoundException, BookmarkInvalidEntryException, BookmarkDuplicateException {
 		Type toUpdate = findTypeById(id);
 		if (!this.bookmarkService.findRepeatedBookmark(bookmark)) {
-			Bookmark newBookmark = this.bookmarkService.createBookmark(bookmark);
+			this.bookmarkService.createBookmark(bookmark);
 		}
 		if (toUpdate.getBookmarks().contains(bookmark)) {
 			throw new BookmarkDuplicateException();

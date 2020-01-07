@@ -57,6 +57,8 @@ public class TypeServiceUnitTest {
 	private Bookmark testBookmarkWithId;
 
 	private List<Bookmark> bookmarkList;
+
+	private Bookmark findRepeatedBookmark;
 	
 	@Before
 	public void init() {
@@ -157,8 +159,12 @@ public class TypeServiceUnitTest {
 		newType.setId(this.id);
 		Bookmark newBookmark = new Bookmark("Udemy", "Java online course", "https://www.udemy.com/topic/java/");
 		newBookmark.setId(this.id);
-		newType.getBookmarks().add(newBookmark);
-		
+		List<Bookmark> bookmarks = new ArrayList<>();
+		bookmarks.add(newBookmark);
+		newType.setBookmarks(bookmarks);
+		//newType.getBookmarks().add(newBookmark);
+
+
 		when(this.repo.saveAndFlush(this.testTypeWithId)).thenReturn(this.testTypeWithId);
 		when(this.repo.findById(this.id)).thenReturn(Optional.of(this.testTypeWithId));
 		
