@@ -36,6 +36,9 @@ public class TypeServiceUnitTest {
 	private TypeService service;
 	
 	@Mock
+	private BookmarkService bookmarkService;
+	
+	@Mock
 	private TypeRepo repo;
 	
 	private List<Type> typeList;
