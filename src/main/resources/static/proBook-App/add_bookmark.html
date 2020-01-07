@@ -34,7 +34,7 @@
 
     <header class="page-header header container-fluid">
         <div class="overlay"></div>
-        <form action="#">
+        <form action="bookmark-form">
 
             <header>
                 <h2>Add Bookmark</h2>
@@ -79,23 +79,7 @@
                     </select>
                 </div>
             </div>
-
-            <div>
-                <label class="desc" id="title5" for="Field5">
-                    Create New Type
-                </label>
-                <div>
-                    <input id="Field5" name="Field5" type="type" spellcheck="false" value="" maxlength="255"
-                        tabindex="5">                    
-                </div>
-                <div>
-                    <input id="saveType" name="saveForm" type="create" value="Create">
-                </div>
-            </div>
-            
-                
-            
-            <br>
+        
             <br>
             <div>
                 <div>
@@ -104,6 +88,21 @@
             </div>
 
         </form>
+        <br>
+        <div>
+            <label class="desc" id="title5" for="Field5">
+                Create New Type
+            </label>
+            <div>
+                <input id="Field5" name="Field5" type="type" spellcheck="false" value="" maxlength="255"
+                    tabindex="5">                    
+            </div>
+            <div>
+                <button id="saveType" name="saveType" type="create" value="Create">
+                    Create Type
+                </button>
+            </div>
+        </div>
 
 
 
@@ -112,6 +111,8 @@
 
     <script src="jquery-3.3.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="scripts/add_bookmark.js"></script>
 </body>
 
