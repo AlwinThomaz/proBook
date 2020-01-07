@@ -160,14 +160,16 @@ public class TypeServiceUnitTest {
 	public void addBookmarkToTypeTest() throws TypeNotFoundException, BookmarkInvalidEntryException, BookmarkDuplicateException {
 		Type newType = new Type(this.testTypeWithId.getName());
 		newType.setId(this.id);
-		Bookmark newBookmark = new Bookmark("Udemy", "Java online course", "https://www.udemy.com/topic/java/");
+		Bookmark newBookmark = new Bookmark("Udemy", "Java online course", "https://www.udemy.com");
 		newBookmark.setId(this.id);
+		Bookmark Bookmark2 = new Bookmark("test", "testing", "https://www.test.com");
+		Bookmark2.setId(this.id);
 		List<Bookmark> bookmarks = new ArrayList<>();
 		bookmarks.add(newBookmark);
 		newType.setBookmarks(bookmarks);
 		//newType.getBookmarks().add(newBookmark);
 
-
+		when(this.bookmarkService.findRepeatedBookmark(testBookmark)).thenReturn(false);
 		when(this.repo.saveAndFlush(this.testTypeWithId)).thenReturn(this.testTypeWithId);
 		when(this.repo.findById(this.id)).thenReturn(Optional.of(this.testTypeWithId));
 		
