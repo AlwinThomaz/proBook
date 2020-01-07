@@ -29,10 +29,9 @@ public class Type {
 
 	}
 
-	public Type(String name, Bookmark... bookmarks) {
+	public Type(String name) {
 		super();
 		this.name = name;
-		this.bookmarks = Arrays.asList(bookmarks);
 
 	}
 
