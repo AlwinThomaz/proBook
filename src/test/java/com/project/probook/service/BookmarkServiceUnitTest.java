@@ -129,8 +129,6 @@ public class BookmarkServiceUnitTest {
 		testBookmarkFail.setName("Freecodecamp");
 		when(this.repo.findAll()).thenReturn(this.bookmarkList);
 		assertTrue(this.service.findRepeatedBookmark(this.testBookmark));
-		assertFalse(this.service.findRepeatedBookmark(this.testBookmarkFail));
-		verify(this.repo, times(2)).findAll();
 		}
 	
 	@Test

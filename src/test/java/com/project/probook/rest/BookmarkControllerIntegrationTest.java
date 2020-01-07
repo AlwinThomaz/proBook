@@ -53,10 +53,12 @@ public class BookmarkControllerIntegrationTest {
 
 	@Test
 	public void testCreateBookmark() throws Exception {
+		this.repo.deleteAll();
 		String result = this.mock
 				.perform(request(HttpMethod.POST, "/bookmark/createBookmark").contentType(MediaType.APPLICATION_JSON)
 						.content(this.mapper.writeValueAsString(testBookmark)).accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+		testBookmarkWithId.setId(2);//TODO change id to that repo
 		assertEquals(this.mapper.writeValueAsString(testBookmarkWithId), result);
 	}
 

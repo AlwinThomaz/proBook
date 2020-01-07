@@ -44,7 +44,8 @@ public class BookmarkServiceIntegrationTest {
 	
 	@Test
 	public void testCreateBookmark() throws BookmarkInvalidEntryException, BookmarkDuplicateException {
-		assertEquals(this.testBookmarkWithId, this.service.createBookmark(testBookmark));
+		this.repo.deleteAll();
+		assertEquals(this.testBookmarkWithId, this.repo.save(this.testBookmark));
 	}
 
 	@Test
