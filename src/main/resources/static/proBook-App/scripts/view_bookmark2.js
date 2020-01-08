@@ -34,3 +34,5 @@ $(document).on('click', '.edit', function() {
   $('.add').click(function() {
     $(this).parents('table').append('<tr><td class="data"></td><td class="data"></td><td class="data"></td><td><button class="save">Save</button><button class="edit">Edit</button> <button class="delete">Delete</button></td></tr>');
   });
+
+  

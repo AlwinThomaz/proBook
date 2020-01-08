@@ -41,64 +41,70 @@
             </header>
 
             <div>
-                <label class="desc" id="title1" for="Field1">Name</label>
+                <label class="desc" id="title1" for="inputName">Name</label>
                 <div>
-                    <input id="Field1" name="Field1" type="text" class="field text fn" value="" size="8" tabindex="1">
+                    <input id="inputName" name="Field1" type="text" class="field text fn" value="" size="8"
+                        tabindex="1">
                 </div>
             </div>
 
             <div>
-                <label class="desc" id="title3" for="Field3">
-                    URL
-                </label>
-                <div>
-                    <input id="Field3" name="Field3" type="url" spellcheck="false" value="" maxlength="255"
-                        tabindex="3">
-                </div>
-            </div>
-
-            <div>
-                <label class="desc" id="title4" for="Field4">
+                <label class="desc" id="title2" for="inputDescription">
                     Description
                 </label>
 
                 <div>
-                    <textarea id="Field4" name="Field4" type="description" spellcheck="true" rows="10" cols="50" tabindex="4"></textarea>
+                    <textarea id="inputDescription" name="Field2" type="description" spellcheck="true" rows="10"
+                        cols="50" tabindex="4"></textarea>
                 </div>
             </div>
 
             <div>
-                <label class="desc" id="title106" for="Field106">
+                <label class="desc" id="title3" for="inputUrl">
+                    URL
+                </label>
+                <div>
+                    <input id="inputUrl" name="Field3" type="url" spellcheck="false" value="" maxlength="255"
+                        tabindex="3">
+                </div>
+            </div>
+
+
+
+            <div>
+                <label class="desc" id="title106" for="inputType">
                     Select a Type
                 </label>
                 <div>
-                    <select id="Field106" name="Field106" class="field select medium" tabindex="11">
+                    <select id="inputTypeId" name="Field106" class="field select medium" tabindex="11">
                         <option value="First Choice">Software Tools</option>
                         <option value="Second Choice">Programming Courses</option>
                         <option value="Third Choice">Misc</option>
                     </select>
                 </div>
             </div>
-        
+
             <br>
             <div>
                 <div>
-                    <input id="saveBookmark" name="saveForm" type="submit" value="Submit">
+
+                    <input id="saveBookmark" name="saveForm" type="button" value="Submit" onclick="createBookmark();">
+
                 </div>
             </div>
 
         </form>
         <br>
         <div>
-            <label class="desc" id="title5" for="Field5">
+            <label class="desc" id="title5" for="createType">
                 Create New Type
             </label>
             <div>
-                <input id="Field5" name="Field5" type="type" spellcheck="false" value="" maxlength="255"
-                    tabindex="5">                    
+                <input id="createType" name="Field5" type="type" spellcheck="false" value="" maxlength="255"
+                    tabindex="5">
             </div>
             <div>
-                <button id="saveType" name="saveType" type="create" value="Create">
+                <button id="saveType" name="Field6" type="create" value="Create">
                     Create Type
                 </button>
             </div>
@@ -114,6 +120,7 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="scripts/add_bookmark.js"></script>
+    <script src="scripts/scripts.js"></script>
 </body>
 
 </html>
