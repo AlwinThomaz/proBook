@@ -3,120 +3,100 @@
 
 <head>
 
-    <title>proBook Add Bookmarks Page</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="styles/add_bookmark2.css">
+<title>proBook Add Bookmarks Page</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="styles/add_bookmark2.css">
 
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md">
-        <a class="nav-link" href="index.html">proBook</a>
-        <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="main-navigation">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="add_bookmark2.html">Add Bookmark</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="view_bookmark2.html">View Bookmarks</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="view_type.html">View Types</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+	<nav class="navbar navbar-expand-md">
+		<a class="nav-link" href="index.html">proBook</a>
+		<button class="navbar-toggler navbar-dark" type="button"
+			data-toggle="collapse" data-target="#main-navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="main-navigation">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link"
+					href="add_bookmark2.html">Add Bookmark</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="view_bookmark2.html">View Bookmarks</a></li>
+				<li class="nav-item"><a class="nav-link" href="view_type.html">View
+						Types</a></li>
+			</ul>
+		</div>
+	</nav>
 
-    <header class="page-header header container-fluid">
-        <div class="overlay"></div>
-        <form id="addBookmark">
-
-            <header>
-                <h2>Add Bookmark</h2>
-            </header>
-
-            <div>
-                <label class="desc">Name</label>
-                <div>
-                    <input id="bookmarkName" name="Field1" type="text" class="field text fn" value="" size="8"
-                        tabindex="1">
-                </div>
-            </div>
-
-            <div>
-                <label class="desc">Description</label>
-
-                <div>
-                    <textarea id="bookmarkDescription" name="Field2" type="description" spellcheck="true" rows="10"
-                        cols="50" tabindex="4"></textarea>
-                </div>
-            </div>
-
-            <div>
-                <label class="desc">URL</label>
-                <div>
-                    <input id="bookmarkUrl" name="Field3" type="url" spellcheck="false" value="" maxlength="255"
-                        tabindex="3">
-                </div>
-            </div>
+	<header class="page-header header container-fluid">
+		<div class="overlay"></div>
 
 
+		<h2>Add Bookmark</h2>
+		<hr>
 
-            <div>
-                <label class="desc" id="title106" for="inputType">
-                    Select a Type
-                </label>
-                <div>
-                    <select id="inputTypeId" name="Field106" class="field select medium" tabindex="11">
-                        <option value="1">Software Tools</option>
-                        <option value="2">Programming Courses</option>
-                        <option value="3">Misc</option>
-                    </select>
-                </div>
-            </div>
+		<form id="addBookmark">
+			<div class="form-group">
+				<label for="bookmarkName">Bookmark Name:</label> 
+				<input type="text" class="form-control" id="bookmarkName" required>
+			</div>
+			<div class="form-group">
+				<label for="bookmarkDescription">Bookmark Description:</label> 
+				<input type="text" class="form-control" id="bookmarkDescription" required>
+			</div>
+			<div class="form-group">
+				<label for="bookmarkUrl">Bookmark Url:</label> 
+				<input type="text" class="form-control" id="bookmarkUrl" required>
+			</div>
+			<div>
+				<label for="selectBookmarkType"> Select a Type </label>
+				<div>
+					<select id="selectBookmarkType" class="form-control">
+						<option value="1">Software Tools</option>
+						<option value="2">Programming Courses</option>
+						<option value="3">Misc</option>
+					</select>
+				</div>
+			</div>
+			<div>
+				<div>
+					<input class="btn btn-primary pull-right" class="form-control" name="submit" type="submit" value="Submit"/>
+				</div>
+			</div>
 
-            <br>
-            <div>
-                <div>
-
-                    <input id="saveBookmark" name="saveForm" type="button" value="Submit" onclick="createBookmark();">
-
-                </div>
-            </div>
-
-        </form>
-        <br>
-        <div>
-            <label class="desc" id="title5" for="createType">
-                Create New Type
-            </label>
-            <div>
-                <input id="createType" name="Field5" type="type" spellcheck="false" value="" maxlength="255"
-                    tabindex="5">
-            </div>
-            <div>
-                <button id="saveType" name="Field6" type="create" value="Create">
-                    Create Type
-                </button>
-            </div>
-        </div>
+		</form>
+		
+		<form id="createType">
+		<br>
+		<div>
+			<label for="createNewType">Create New Type:</label>
+			<div>
+				<input type="text" class="form-control" id="createNewType" required>
+			</div>
+			<br>
+			<br>
+			<div>
+				<div>
+					<input class="btn btn-primary pull-right" class="form-control" name="submit" type="submit" value="Create"/>
+				</div>
+			</div>
+		</div>
+		</form>
 
 
 
-    </header>
+	</header>
 
 
-    <script src="jquery-3.3.1.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="scripts/add_bookmark2.js"></script>
-    <script src="scripts/scripts2.js"></script>
+	<script src="jquery-3.3.1.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="scripts/add_bookmark2.js"></script>
+	<script src="scripts/scripts2.js"></script>
 </body>
 
 </html>
