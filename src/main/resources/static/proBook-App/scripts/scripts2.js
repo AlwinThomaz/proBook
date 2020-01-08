@@ -1,7 +1,4 @@
 "use strict"
-const bookmarkList = document.getElementById("bookmarks");
-const typeList = document.getElementById("bookmarks");
-
 
 function createType() {
     let typeName = document.getElementById('createType').value;
