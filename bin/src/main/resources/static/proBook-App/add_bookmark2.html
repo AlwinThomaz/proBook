@@ -34,33 +34,37 @@
 
     <header class="page-header header container-fluid">
         <div class="overlay"></div>
-        <form id="addBookmark">
+        <form action="bookmark-form">
 
             <header>
                 <h2>Add Bookmark</h2>
             </header>
 
             <div>
-                <label class="desc">Name</label>
+                <label class="desc" id="title1" for="inputName">Name</label>
                 <div>
-                    <input id="bookmarkName" name="Field1" type="text" class="field text fn" value="" size="8"
+                    <input id="inputName" name="Field1" type="text" class="field text fn" value="" size="8"
                         tabindex="1">
                 </div>
             </div>
 
             <div>
-                <label class="desc">Description</label>
+                <label class="desc" id="title2" for="inputDescription">
+                    Description
+                </label>
 
                 <div>
-                    <textarea id="bookmarkDescription" name="Field2" type="description" spellcheck="true" rows="10"
+                    <textarea id="inputDescription" name="Field2" type="description" spellcheck="true" rows="10"
                         cols="50" tabindex="4"></textarea>
                 </div>
             </div>
 
             <div>
-                <label class="desc">URL</label>
+                <label class="desc" id="title3" for="inputUrl">
+                    URL
+                </label>
                 <div>
-                    <input id="bookmarkUrl" name="Field3" type="url" spellcheck="false" value="" maxlength="255"
+                    <input id="inputUrl" name="Field3" type="url" spellcheck="false" value="" maxlength="255"
                         tabindex="3">
                 </div>
             </div>
