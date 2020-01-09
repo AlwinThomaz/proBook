@@ -1,4 +1,4 @@
-function alwin() {
+function createTypes() {
     let typeName = document.getElementById('createType').value;
     const data = {
         "name": typeName
@@ -32,24 +32,6 @@ function createBookmark() {
         )
 }
 
-function createBookmarkTest() {
-    let bookmarkName = document.getElementById('bookmarkName').value;
-    let bookmarkUrl = document.getElementById('bookmarkUrl').value;
-    let bookmarkDescription = document.getElementById('bookmarkDescription').value;
-    const data = {
-        "name": bookmarkName,
-        "description": bookmarkDescription,
-        "url": bookmarkUrl
-    }
-    axios.post('http://localhost:8080/bookmark/createBookmark', data)
-        .then(console.log(data))
-        .catch((error) => {
-            console.error(error);
-        })
-}
-
-
-
 function addBookmarkToType() {
 
 
@@ -67,4 +49,20 @@ function addBookmarkToType() {
             console.error(error);
         }
         )
+}
+
+function createBookmarkTest() {
+    let bookmarkName = document.getElementById('bookmarkName').value;
+    let bookmarkUrl = document.getElementById('bookmarkUrl').value;
+    let bookmarkDescription = document.getElementById('bookmarkDescription').value;
+    const data = {
+        "name": bookmarkName,
+        "description": bookmarkDescription,
+        "url": bookmarkUrl
+    }
+    axios.post('http://localhost:8080/bookmark/createBookmark', data)
+        .then(console.log(data))
+        .catch((error) => {
+            console.error(error);
+        })
 }
