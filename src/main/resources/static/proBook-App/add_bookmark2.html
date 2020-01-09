@@ -21,6 +21,8 @@
 		<div class="collapse navbar-collapse" id="main-navigation">
 			<ul class="navbar-nav">
 				<li class="nav-item"><a class="nav-link"
+					href="add_type.html">Add Type</a></li>
+				<li class="nav-item"><a class="nav-link"
 					href="add_bookmark2.html">Add Bookmark</a></li>
 				<li class="nav-item"><a class="nav-link"
 					href="view_bookmark2.html">View Bookmarks</a></li>
@@ -63,29 +65,13 @@
 			</div>
 			<div>
 				<div>
-					<input id="saveBookmark" name="saveForm" type="button" value="Submit" onclick="createBookmarkTest();">
+					<button id="saveBookmark" class="form-control" name="saveForm" type="button" value="Submit" onclick="createBookmarkTest();">Submit</button>
 				</div>
 			</div>
 
 		</form>
 		<br>
 		<hr>
-		<form id="createType">
-		<br>
-		<div>
-			<label for="createNewType">Create New Type:</label>
-			<div>
-				<input type="text" class="form-control" id="createNewType" required>
-			</div>
-			<br>
-			<br>
-			<div>
-				<div>
-					<input class="btn btn-primary pull-right" class="form-control" name="submit" type="submit" value="Create"/>
-				</div>
-			</div>
-		</div>
-		</form>
 		</div>
 
 
@@ -94,12 +80,11 @@
 
 
 	<script src="jquery-3.3.1.min.js"></script>
-	<script src="bootstrap/js/bootstrap.min.js"></script>
-	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="scripts/add_bookmark2.js"></script>
 	<script src="scripts/scripts2.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	
 </body>
 
 </html>
