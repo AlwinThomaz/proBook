@@ -16,9 +16,9 @@ function createType() {
    
 
 function createBookmark() {
-    let bookmarkName = document.getElementById('inputName').value;
-    let bookmarkUrl = document.getElementById('inputUrl').value;
-    let bookmarkDescription = document.getElementById('inputDescription').value;
+    let bookmarkName = document.getElementById('bookmarkName').value;
+    let bookmarkUrl = document.getElementById('bookmarkUrl').value;
+    let bookmarkDescription = document.getElementById('bookmarkDescription').value;
     const data = {
         "name": bookmarkName,
         "description": bookmarkDescription,
