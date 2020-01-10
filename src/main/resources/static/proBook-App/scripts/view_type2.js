@@ -1,6 +1,4 @@
-$(document).ready(function(){
-	$('.header').height($(window).height());
-})
+
 
 $(document).on('click', '.edit', function() {
     $(this).parent().siblings('td.data').each(function() {

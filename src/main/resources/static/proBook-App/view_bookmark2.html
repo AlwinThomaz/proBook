@@ -11,7 +11,7 @@
 
 </head>
 
-<body>
+<body onload="populateBookmarkTable()">
     <nav class="navbar navbar-expand-md">
         <a class="nav-link" href="index.html">proBook</a>
         <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
@@ -38,8 +38,8 @@
     <header class="page-header header container-fluid">
         <div class="overlay"></div>
         <div class="caption">Bookmarks</div>
-        <div id="table">
-            <table class="table data">
+        <div id="container">
+            <table id="bookmarkTable" class="table data">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -55,21 +55,9 @@
                             <td class="data">johndoe@john.com</td>
                             <td class="data">666-666-666</td>
                             <td>
-                                <button class="save">Save</button>
-                                <button class="edit">Edit</button>
-                                <button class="delete">Delete</button>
-                            </td>
-                        </tr>
-                    </div>
-                    <div class="row">
-                        <tr>
-                            <td class="data">John Doe</td>
-                            <td class="data">johndoe@john.com</td>
-                            <td class="data">666-666-666</td>
-                            <td>
-                                <button class="save">Save</button>
-                                <button class="edit">Edit</button>
-                                <button class="delete">Delete</button>
+                                <button id="saveBookmarkButton" class="save">Save</button>
+                                <button id="editBookmarkButton" class="edit">Edit</button>
+                                <button id="deleteBookmarkButton" class="delete">Delete</button>
                             </td>
                         </tr>
                     </div>
@@ -81,7 +69,8 @@
 
     <script src="jquery-3.3.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="scripts/view_bookmark2.js"></script>
+    <script src="scripts/bookmark_scripts.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>
