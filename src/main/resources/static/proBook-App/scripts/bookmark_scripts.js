@@ -41,10 +41,9 @@ function findTypeId() {
 
 //View_Bookmark
 function populateBookmarkTable() {
-    axios.get('http://localhost:8080/bookmarks/getAllBookmarks'
+    axios.get('http://localhost:8080/bookmark/getAllBookmarks'
     ).then((response) => {
-        response.data.forEach(addBookmark);
-
+        response.data.forEach(addToBookmarkTable);
         console.log(response);
 
     }).catch(error => {
@@ -54,17 +53,12 @@ function populateBookmarkTable() {
 
 }
 
-function addBookmark() {
-    let bookmarkTable = document.getElementById('bookmarkTable')
-    row = bookmarkTable.insertRow(bookmarkTable.rows.length),
-        i;
-    for (i = 0; i < bookmarkTable.rows[0].cells.length; i++) {
-        createRow(row.insertRow(item.bookmarkName));
-        createCell(row.insertCell(item.bookmarkDescription));
-        createCell(row.insertCell(item.bookmarkUrl));
+function addToBookmarkTable() {
+    var newRow=document.getElementById('bookmarkTable').insertRow();
+    newRow.innerHTML = "<td></td><td>New row 2nd cell</td>";
         
  }
-}
+
 
 
 $(document).on('click', '.edit', function () {
