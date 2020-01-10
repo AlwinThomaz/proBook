@@ -11,6 +11,16 @@ function createTypes() {
 }
 
 
+
+
+
+
+
+
+
+
+
+
 function createBookmark() {
 
     let bookmarkName = document.getElementById('bookmarkName').value;
