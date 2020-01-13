@@ -13,16 +13,20 @@ function addBookmarkToTable(newEntry, aRow) {
     bookmarkDescription.innerHTML = newEntry.description;
     let bookmarkUrl = document.createElement('td');
     bookmarkUrl.innerHTML = newEntry.url;
-    // let editButton = document.createElement('td');
-    // editButton.innerHTML = `<button type="button" class="btn btn-secondary" onclick='destroy(${newEntry.poseID})' > Delete</button >`;
     let deleteButton = document.createElement('td');
-    deleteButton.innerHTML = `<button type="button" id="${newEntry.id}" class="btn btn-secondary" onclick="deleteBookmark(this.id);" > Delete</button >`;
+    deleteButton.innerHTML = `<button type="button" id="${newEntry.id}" class="delete" onclick="deleteBookmark(this.id);"> Delete</button >`;
+    let editButton = document.createElement('td');
+    editButton.innerHTML = `<button type="button" class="edit" data-toggle="modal" data-target="#exampleModal" onclick ='clickable(${newEntry.id});'> Edit</button >`;
+    let saveButton = document.createElement('td');
+    saveButton.innerHTML = `<button type="button" class="save" data-toggle="modal" data-target="#exampleModal" onclick ='clickable(${newEntry.id});'> Save</button >`;
+
 
     aRow.appendChild(bookmarkName);
     aRow.appendChild(bookmarkDescription);
     aRow.appendChild(bookmarkUrl);
-    //aRow.appendChild(editButton);
-     aRow.appendChild(deleteButton);
+    aRow.appendChild(editButton);
+    aRow.appendChild(deleteButton); 
+    aRow.appendChild(saveButton);
 }
 
 
@@ -54,10 +58,10 @@ function bookmarkMaker(name, description, url) {
     return bookmark;
 }
 
-function updateBookmark() {
+function updateBookmark(bookmarkId) {
     let bookmark = bookmarkMaker(updateBookmarkName, updateBookmarkDescription, updateBookmarkUrl);
     console.log(bookmark)
-    findBookmarkId();
+    //findBookmarkId();
     axios.put("localhost:8080/bookmark/updateBookmark?id=" + bookmarkId)
         .then((response) => {
             console.log(response)
@@ -107,7 +111,8 @@ function clickable() {
     });
 
     $(document).on('click', '.save', function () {
-
+        updateBookmark(bookmarkId);
+        console.log(bookmarkId);
         $('input').each(function () {
             var content = $(this).val();
             $(this).html(content);
@@ -119,9 +124,8 @@ function clickable() {
 
     });
 
-
-    $(document).on('click', '.delete', function () {
-        $(this).parents('tr').remove();
-    });
+    // $(document).on('click', '.delete', function () {
+    //     $(this).parents('tr').remove();
+    // });
 }
 
