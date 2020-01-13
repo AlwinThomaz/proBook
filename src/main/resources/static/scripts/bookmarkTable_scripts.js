@@ -4,54 +4,75 @@ const table = document.getElementById("bookmarkTable");
 const tableBody = document.getElementById("bookmarkTableBody");
 const tableContainer = document.getElementById("bookmarkTableContainer");
 
-//View_Bookmark_Table
+function addBookmarkToTable(newEntry, aRow) {
+    // let bookmarkId = document.createElement('td');
+    // bookmarkId.innerHTML = newEntry.bookmarkId;
+    let bookmarkName = document.createElement('td');
+    bookmarkName.innerHTML = newEntry.name;
+    let bookmarkDescription = document.createElement('td');
+    bookmarkDescription.innerHTML = newEntry.description;
+    let bookmarkUrl = document.createElement('td');
+    bookmarkUrl.innerHTML = newEntry.url;
+    // let editButton = document.createElement('td');
+    // deleteButton.innerHTML = `<button type="button" class="btn btn-secondary" onclick='destroy(${newEntry.poseID})' > Delete</button >`;
+    // let deleteButton = document.createElement('td');
+    // deleteButton.innerHTML = `<button type="button" class="btn btn-secondary" onclick='destroy(${newEntry.poseID})' > Delete</button >`;
+    
 
-function populateBookmarkTable() {
-    axios.get('http://localhost:8080/bookmark/getAllBookmarks'
-    ).then((response) => {
-        response.data.forEach(addToBookmarkTable);
-        console.log(response);
-
-    }).catch(error => {
-        console.log(error);
-
-    });
-
+    // aRow.appendChild(bookmarkId);
+    aRow.appendChild(bookmarkName);
+    aRow.appendChild(bookmarkDescription);
+    aRow.appendChild(bookmarkUrl);
+    // aRow.appendChild(editButton);
+    // aRow.appendChild(deleteButton);
 }
 
-function addBookmarkRow() {
-    let row = document.createElement("tr");
-    row.setAttribute("id", bookmark.id);
-    row.setAttribute("name", bookmark.name);
-    row.setAttribute("description", bookmark.description);
-    row.setAttribute("url", bookmark.url);
-}
 
-function generateTable(bookmarkList) {
-    clearTableBody();
-    if (!jQuery.isEmptyObject(bookmarkList)) {
-        for (let bookmark of bookmarkList) {
-            addRow(bookmark);
-        }
-    }
-    else {
-        tableContainer.innerHTML = "";
-        let errorMessage = document.createElement("h2");
-        message.innerText = "No saved bookmarks, please enter a new bookmark!";
-        tableContainer.appendChild(errorMessage);
-    }
-};
-
-function generateBookmarkList() {
+const readAll = () => {
+    // removes any existing tables
+    // const tableContainer = document.getElementById('table');
+    // if (tableContainer.rows.length > 1) {
+    //     const tableBody = tableBody.rows.length;
+    //     for (let i = tableBody; i > 1; i--) {
+    //         tableContainer.deleteRow(i - 1);
+    //     }
+    // }
     axios.get("http://localhost:8080/bookmark/getAllBookmarks")
         .then((response) => {
             console.log(response.status)
-            generateTable(response.data);
+            let data = (response.data);
+            console.log(data);
+            console.table(data);
 
-        }).catch((error) => {
-            console.error(error);
-        });
-};
+            const tableContainer = document.getElementById('table');
+
+            // creating table rows and adding data into the rows
+            for (let bookmark of data) {
+                console.log(bookmark);
+                let aRow = document.createElement('tr');
+                tableBody.appendChild(aRow);
+                addBookmarkToTable(bookmark, aRow);
+            }
+            // for (let i = 0; i < data.length; i++) {
+            //     console.log(i + "run");
+            //     let aRow = document.createElement('tr');
+            //     tableBody.appendChild(aRow);
+            //     addBookmarkToTable(data[i], aRow);
+            // }
+        }).catch((error) => { console.log(error.message) });
+
+}
+
+// function getBookmarkList() {
+//     axios.get("http://localhost:8080/bookmark/getAllBookmarks")
+//         .then((response) => {
+//             console.log(response.status)
+//             generateTable(response.data);
+
+//         }).catch((error) => {
+//             console.error(error);
+//         });
+// };
 
 
 function clickable() {
@@ -88,3 +109,5 @@ function clickable() {
         $(this).parents('table').append('<tr><td class="data"></td><td class="data"></td><td class="data"></td><td><button class="save">Save</button><button class="edit">Edit</button> <button class="delete">Delete</button></td></tr>');
     });
 }
+
+// readAll();
