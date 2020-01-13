@@ -73,7 +73,7 @@ function deleteBookmark(bookmarkId) {
     console.log(bookmarkId);
     // findBookmarkId();
     axios.delete("http://localhost:8080/bookmark/deleteBookmark/" + bookmarkId)
-        .then((response) => {
+        .then((response) => { location.reload();
             console.log(response);
             readAllBookmarks()
 
