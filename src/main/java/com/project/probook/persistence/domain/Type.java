@@ -8,8 +8,11 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 public class Type {
@@ -23,7 +26,10 @@ public class Type {
 	private String name;
 
 	@OneToMany
+	@JoinColumn(name="type_id", nullable=true)
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private List<Bookmark> bookmarks;
+	
 	
 	public Type() {
 
