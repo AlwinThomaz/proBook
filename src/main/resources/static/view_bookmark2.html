@@ -37,30 +37,17 @@
 
     <header class="page-header header container-fluid">
         <div class="overlay"></div>
-        <div class="caption">Bookmarks</div>
-        <div id="container">
+        
+        <div class="container" id="bookmarkTableContainer">Bookmarks</div>
             <table id="bookmarkTable" class="table data">
                 <thead>
                     <tr>
                         <th>Name</th>
                         <th>Description</th>
                         <th>URL</th>
-                        <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <div class="row">
-                        <tr>
-                            <td class="data">John Doe</td>
-                            <td class="data">johndoe@john.com</td>
-                            <td class="data">666-666-666</td>
-                            <td>
-                                <button id="saveBookmarkButton" class="save">Save</button>
-                                <button id="editBookmarkButton" class="edit">Edit</button>
-                                <button id="deleteBookmarkButton" class="delete">Delete</button>
-                            </td>
-                        </tr>
-                    </div>
+                <tbody id="bookmarkTableBody"> 
                 </tbody>
             </table>
         </div>
