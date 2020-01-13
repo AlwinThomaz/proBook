@@ -28,7 +28,7 @@ function addBookmarkToTable(newEntry, aRow) {
 }
 
 
-const readAll = () => {
+const readAllBookmarks = () => {
     // removes any existing tables
     // const tableContainer = document.getElementById('table');
     // if (tableContainer.rows.length > 1) {
@@ -44,7 +44,7 @@ const readAll = () => {
             console.log(data);
             console.table(data);
 
-            const tableContainer = document.getElementById('table');
+            //const tableContainer = document.getElementById('table');
 
             // creating table rows and adding data into the rows
             for (let bookmark of data) {

@@ -11,7 +11,7 @@
 
 </head>
 
-<body onload="readAll();">
+<body onload="readAllBookmarks();">
     <nav class="navbar navbar-expand-md">
         <a class="nav-link" href="index.html">proBook</a>
         <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
@@ -37,8 +37,8 @@
 
     <header class="page-header header container-fluid">
         <div class="overlay"></div>
-        
-        <div class="container" id="bookmarkTableContainer">Bookmarks</div>
+        <div class="caption">Saved Bookmarks</div>
+        <div class="container" id="bookmarkTableContainer"></div>
             <table id="bookmarkTable" class="table data">
                 <thead>
                     <tr>
@@ -59,7 +59,7 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="scripts/bookmark_scripts.js"></script>
     <script src="scripts/type_scripts.js"></script>
-    <script src="scripts/bookmarkTable_scripts.js"></script>
+    <script src="scripts/bookmarkTable.js"></script>
     <script src="main.js"></script>
 
 </body>
