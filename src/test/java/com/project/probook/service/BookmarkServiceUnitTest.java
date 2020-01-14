@@ -50,13 +50,13 @@ public class BookmarkServiceUnitTest {
 
 	private String description251 = "rzl94za2dh7mocr03cnawrfl0cnabvs873f70jh5o8dd0vkp2ekkp0g4fkknx0h3lzeiwfl6edvyytfu9o7wyd7cr5cn6fxlqgiajo6pt7bn6siydyk6x5yl7y1divkpq4rzj3iqjf3nkhz9xbyd0zl3lox66j1p5ikr5gistj45uwn1my5aphj0h50r9w6f6pu1t3mrgf2kg9xjzvacro7hiuqbc6hwe7bon8f399jd4tw2pckdsv4lkby";
 
-	private String urlNoHttp = "www.test123.com";
+	private String urlNoWebAdress = "test123.com";
 	
 	@Before
 	public void init() {
 		this.bookmarkList = new ArrayList<>();
 		this.testBookmark = new Bookmark("Freecodecamp", "Place to discuss and learn coding",
-				"https://www.freecodecamp.org");
+				"www.freecodecamp.org");
 		this.testBookmarkWithId = new Bookmark(testBookmark.getName(), testBookmark.getDescription(),
 				testBookmark.getUrl());
 		this.testBookmarkWithId.setId(id);
@@ -110,7 +110,7 @@ public class BookmarkServiceUnitTest {
 
 	@Test
 	public void updateBookmarkTest() throws BookmarkNotFoundException {
-		Bookmark newBookmark = new Bookmark("Udemy", "Java online course", "https://www.udemy.com/topic/java/");
+		Bookmark newBookmark = new Bookmark("Udemy", "Java online course", "www.udemy.com/topic/java/");
 		Bookmark updatedBookmark = new Bookmark(newBookmark.getName(), newBookmark.getDescription(),
 				newBookmark.getUrl());
 		updatedBookmark.setId(this.id);
@@ -158,7 +158,7 @@ public class BookmarkServiceUnitTest {
 	
 	@Test
 	public void urlVerifyTest() {
-		this.testBookmarkFail.setUrl(urlNoHttp);
+		this.testBookmarkFail.setUrl(urlNoWebAdress);
 		assertThrows(BookmarkInvalidEntryException.class, () -> {
 			this.service.createBookmark(this.testBookmarkFail);
 		});

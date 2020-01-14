@@ -45,7 +45,7 @@ public class BookmarkControllerUnitTest {
 	public void init() {
 		this.bookmarkList = new ArrayList<>();
 		this.bookmarkList.add(testBookmark);
-		this.testBookmark = new Bookmark("Freecodecamp", "Place to discuss and learn coding", "https://www.freecodecamp.org");
+		this.testBookmark = new Bookmark("Freecodecamp", "Place to discuss and learn coding", "www.freecodecamp.org");
 		this.testBookmarkWithId = new Bookmark(testBookmark.getName(), testBookmark.getDescription(), testBookmark.getUrl());
 		this.testBookmarkWithId.setId(id);		
 	}
@@ -69,7 +69,7 @@ public class BookmarkControllerUnitTest {
 	@Test
 	public void updateBookmarkTest() throws BookmarkNotFoundException {
 		
-		Bookmark newBookmark = new Bookmark("Udemy", "Java online course", "https://www.udemy.com/topic/java/");
+		Bookmark newBookmark = new Bookmark("Udemy", "Java online course", "www.udemy.com/topic/java/");
 		Bookmark updatedBookmark = new Bookmark(newBookmark.getName(), newBookmark.getDescription(), newBookmark.getUrl());
 		updatedBookmark.setId(this.id);
 
