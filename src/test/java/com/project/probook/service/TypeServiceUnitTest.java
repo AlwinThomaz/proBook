@@ -1,7 +1,9 @@
 package com.project.probook.service;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -17,9 +19,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.project.probook.exceptions.BookmarkDuplicateException;
+import com.project.probook.exceptions.BookmarkInvalidEntryException;
 import com.project.probook.exceptions.TypeDuplicateException;
 import com.project.probook.exceptions.TypeInvalidEntryException;
 import com.project.probook.exceptions.TypeNotFoundException;
+import com.project.probook.persistence.domain.Bookmark;
 import com.project.probook.persistence.domain.Type;
 import com.project.probook.persistence.repo.TypeRepo;
 
@@ -31,6 +36,9 @@ public class TypeServiceUnitTest {
 	private TypeService service;
 	
 	@Mock
+	private BookmarkService bookmarkService;
+	
+	@Mock
 	private TypeRepo repo;
 	
 	private List<Type> typeList;
@@ -39,15 +47,35 @@ public class TypeServiceUnitTest {
 	
 	private Type testTypeWithId;
 	
+	private Type testTypeFail;
+	
+	private Type testTypeFailWithId;
+	
 	final long id = 1L;
+	
+	private String name51 = "udsx6umwunzjz6s00fvc0jmlv26e8rj8k7cj5t2grg83h1nnblj";
+
+	private Bookmark testBookmark;
+	
+	private Bookmark testBookmarkWithId;
+
+	private List<Bookmark> bookmarkList;
+
+	private Bookmark findRepeatedBookmark;
 	
 	@Before
 	public void init() {
 		this.typeList = new ArrayList<>();
-		this.typeList.add(testType);
 		this.testType = new Type("Software tools");
 		this.testTypeWithId = new Type(testType.getName());
 		this.testTypeWithId.setId(id);
+		this.typeList.add(testType);
+		this.typeList.add(testType);
+		this.testTypeFail = new Type(testType.getName());
+		this.testTypeFail.setId(id);
+		this.testTypeFailWithId = new Type(testTypeFail.getName());
+		this.testTypeFailWithId.setId(id);
+		
 	}
 	
 	@Test
@@ -101,6 +129,56 @@ public class TypeServiceUnitTest {
 		verify(this.repo, times(1)).findById(1L);
 		verify(this.repo, times(1)).save(updatedType);
 	}
+	
+	@Test
+	public void typeDuplicateTest() {
+		testTypeFail.setName("Software tools");
+		when(this.repo.findAll()).thenReturn(this.typeList);
+		assertTrue(this.service.findRepeatedType(this.testType));
+		assertFalse(this.service.findRepeatedType(this.testTypeFail));
+		verify(this.repo, times(2)).findAll();
+		}
+	
+	@Test
+	public void createTypeDuplicateTest() {
+		when(this.repo.findAll()).thenReturn(this.typeList);
+		assertThrows(TypeDuplicateException.class, () -> {
+			this.service.createType(this.testType);
+			verify(this.repo, times(1)).findAll();
+		});
+	}
+	
+	@Test
+	public void invalidNameTest() {
+		this.testTypeFail.setName(name51);
+		assertThrows(TypeInvalidEntryException.class, () -> {
+			this.service.createType(this.testTypeFail);
+		});
+	}
+	
+//	@Test
+//	public void addBookmarkToTypeTest() throws TypeNotFoundException, BookmarkInvalidEntryException, BookmarkDuplicateException {
+//		Type newType = new Type(this.testTypeWithId.getName());
+//		newType.setId(this.id);
+//		Bookmark newBookmark = new Bookmark("Udemy", "Java online course", "https://www.udemy.com");
+//		newBookmark.setId(this.id);
+//		Bookmark Bookmark2 = new Bookmark("test", "testing", "https://www.test.com");
+//		Bookmark2.setId(this.id);
+//		List<Bookmark> bookmarks = new ArrayList<>();
+//		bookmarks.add(newBookmark);
+//		newType.setBookmarks(bookmarks);
+//		//newType.getBookmarks().add(newBookmark);
+//
+//		when(this.bookmarkService.findRepeatedBookmark(testBookmark)).thenReturn(false);
+//		when(this.repo.saveAndFlush(this.testTypeWithId)).thenReturn(this.testTypeWithId);
+//		when(this.repo.findById(this.id)).thenReturn(Optional.of(this.testTypeWithId));
+//		
+//		assertEquals(newType, this.service.addBookmarkToType(this.id, newBookmark));
+//		verify(this.repo, times(1)).findById(this.id);
+//		verify(this.repo, times(1)).saveAndFlush(this.testTypeWithId);
+//	
+//		
+//	}
 	
 }
 

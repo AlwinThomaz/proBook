@@ -40,8 +40,8 @@ public class TypeController {
 	}
 
 	@PostMapping("/createType")
-	public Type createType(@RequestBody Type bookmark) throws TypeInvalidEntryException, TypeDuplicateException {
-		return this.service.createType(bookmark);
+	public Type createType(@RequestBody Type type) throws TypeInvalidEntryException, TypeDuplicateException {
+		return this.service.createType(type);
 	}
 
 	@DeleteMapping("/deleteType/{id}")

@@ -35,7 +35,7 @@ public class BookmarkServiceIntegrationTest {
 
 	@Before
 	public void init() {
-		this.testBookmark = new Bookmark("AlgoExpert", "Interview Preparation resource", "http://www.algoexpert.com");
+		this.testBookmark = new Bookmark("AlgoExpert", "Interview Preparation resource", "www.algoexpert.com");
 		
 		this.repo.deleteAll();
 		
@@ -44,7 +44,8 @@ public class BookmarkServiceIntegrationTest {
 	
 	@Test
 	public void testCreateBookmark() throws BookmarkInvalidEntryException, BookmarkDuplicateException {
-		assertEquals(this.testBookmarkWithId, this.service.createBookmark(testBookmark));
+		this.repo.deleteAll();
+		assertEquals(this.testBookmarkWithId, this.repo.save(this.testBookmark));
 	}
 
 	@Test
@@ -64,7 +65,7 @@ public class BookmarkServiceIntegrationTest {
 
 	@Test
 	public void testUpdateBookmark() throws BookmarkNotFoundException {
-		Bookmark newBookmark = new Bookmark("Oracle", "Resource to find all information on Java", "http://www.oracle.com");
+		Bookmark newBookmark = new Bookmark("Oracle", "Resource to find all information on Java", "www.oracle.com");
 		Bookmark updatedBookmark = new Bookmark(newBookmark.getName(), newBookmark.getDescription(), newBookmark.getUrl());
 		updatedBookmark.setId(this.testBookmarkWithId.getId());
 
