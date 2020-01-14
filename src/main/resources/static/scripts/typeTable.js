@@ -5,32 +5,46 @@ const tableBody = document.getElementById("typeTableBody");
 const tableContainer = document.getElementById("typeTableContainer");
 
 function addTypeToTable(newEntry, aRow) {
-    // let bookmarkId = document.createElement('td');
-    // bookmarkId.innerHTML = newEntry.bookmarkId;
+
     let typeName = document.createElement('td');
     typeName.innerHTML = newEntry.name;
-    // let editButton = document.createElement('td');
-    // deleteButton.innerHTML = `<button type="button" class="btn btn-secondary" onclick='destroy(${newEntry.poseID})' > Delete</button >`;
-    // let deleteButton = document.createElement('td');
-    // deleteButton.innerHTML = `<button type="button" class="btn btn-secondary" onclick='destroy(${newEntry.poseID})' > Delete</button >`;
-    
+    typeName.setAttribute("class", "data");
+    typeName.setAttribute("id", "typeName");
 
-    // aRow.appendChild(bookmarkId);
+    let buttonCell = document.createElement('td');
+
+    let editButton = document.createElement('button');
+    editButton.setAttribute("type", "button");
+    editButton.setAttribute("class", "edit");
+    editButton.setAttribute("data-toggle", "modal");
+    editButton.setAttribute("data-target", "#exampleModal");
+    editButton.innerText = "Edit";
+    buttonCell.appendChild(editButton);
+
+    let saveButton = document.createElement('button');
+    saveButton.setAttribute("type", "button");
+    saveButton.setAttribute("class", "save");
+    saveButton.setAttribute("data-toggle", "modal");
+    saveButton.setAttribute("data-target", "#exampleModal");
+    saveButton.innerText = "Save";
+    saveButton.id = newEntry.id;
+    console.log(saveButton.id);
+    buttonCell.appendChild(saveButton);
+
+    let deleteButton = document.createElement('button');
+    deleteButton.setAttribute("type", "button");
+    deleteButton.setAttribute("class", "delete");
+    deleteButton.id = newEntry.id;
+
+    deleteButton.innerText = "Delete";
+    buttonCell.appendChild(deleteButton);
+
     aRow.appendChild(typeName);
-    // aRow.appendChild(editButton);
-    // aRow.appendChild(deleteButton);
+    aRow.appendChild(buttonCell);
 }
 
 
-const readAllTypes = () => {
-    // removes any existing tables
-    // const tableContainer = document.getElementById('table');
-    // if (tableContainer.rows.length > 1) {
-    //     const tableBody = tableBody.rows.length;
-    //     for (let i = tableBody; i > 1; i--) {
-    //         tableContainer.deleteRow(i - 1);
-    //     }
-    // }
+function readAllTypes() {
     axios.get("http://localhost:8080/type/getAllTypes")
         .then((response) => {
             console.log(response.status)
@@ -38,41 +52,49 @@ const readAllTypes = () => {
             console.log(data);
             console.table(data);
 
-            //const tableContainer = document.getElementById('table');
-
-            // creating table rows and adding data into the rows
             for (let type of data) {
                 console.log(type);
                 let aRow = document.createElement('tr');
                 tableBody.appendChild(aRow);
                 addTypeToTable(type, aRow);
+                clickable();
             }
-            // for (let i = 0; i < data.length; i++) {
-            //     console.log(i + "run");
-            //     let aRow = document.createElement('tr');
-            //     tableBody.appendChild(aRow);
-            //     addBookmarkToTable(data[i], aRow);
-            // }
         }).catch((error) => { console.log(error.message) });
 
 }
 
-// function getBookmarkList() {
-//     axios.get("http://localhost:8080/bookmark/getAllBookmarks")
-//         .then((response) => {
-//             console.log(response.status)
-//             generateTable(response.data);
+function updateType(typeId) {
+    let typeName = document.getElementById('typeName').innerText;
 
-//         }).catch((error) => {
-//             console.error(error);
-//         });
-// };
+    const data = {
+        "name": typeName
+    }
+    axios.put("http://localhost:8080/type/updateType?id=" + typeId, data)
+        .then((response) => {
+            console.log(response)
+        }).catch((error) => { console.log(error.message) });
+}
 
+
+
+function deleteType(typeId) {
+    console.log(typeId);
+    axios.delete("http://localhost:8080/type/deleteType/" + typeId)
+        .then((response) => {
+            location.reload();
+            console.log(response);
+            readAllTypes()
+
+        }).catch((error) => {
+            console.error(error);
+        });
+
+}
 
 function clickable() {
     $(document).on('click', '.edit', function () {
         $(this).parent().siblings('td.data').each(function () {
-            var content = $(this).html();
+            let content = $(this).html();
             $(this).html('<input value="' + content + '" />');
         });
 
@@ -82,12 +104,13 @@ function clickable() {
     });
 
     $(document).on('click', '.save', function () {
-
         $('input').each(function () {
-            var content = $(this).val();
+            let content = $(this).val();
             $(this).html(content);
             $(this).contents().unwrap();
         });
+        console.log($(this).attr("id"));
+        updateType($(this).attr("id"));
         $(this).siblings('.edit').show();
         $(this).siblings('.delete').show();
         $(this).hide();
@@ -96,12 +119,9 @@ function clickable() {
 
 
     $(document).on('click', '.delete', function () {
+        deleteType($(this).attr("id"));
         $(this).parents('tr').remove();
     });
 
-    $('.add').click(function () {
-        $(this).parents('table').append('<tr><td class="data"></td><td class="data"></td><td class="data"></td><td><button class="save">Save</button><button class="edit">Edit</button> <button class="delete">Delete</button></td></tr>');
-    });
 }
 
-// readAll();
