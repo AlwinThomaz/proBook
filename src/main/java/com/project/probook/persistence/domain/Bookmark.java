@@ -68,16 +68,16 @@ public class Bookmark {
 				+ "]";
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((url == null) ? 0 : url.hashCode());
-		return result;
-	}
+//	@Override
+//	public int hashCode() {
+//		final int prime = 31;
+//		int result = 1;
+//		result = prime * result + (int) (id ^ (id >>> 32));
+//		result = prime * result + ((description == null) ? 0 : description.hashCode());
+//		result = prime * result + ((name == null) ? 0 : name.hashCode());
+//		result = prime * result + ((url == null) ? 0 : url.hashCode());
+//		return result;
+//	}
 
 	@Override
 	public boolean equals(Object obj) {
