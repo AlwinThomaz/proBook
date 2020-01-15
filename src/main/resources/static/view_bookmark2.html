@@ -11,7 +11,7 @@
 
 </head>
 
-<body onload="readAllBookmarks(); populateSelect()">
+<body onload="populateSelect();">
     <nav class="navbar navbar-expand-md">
         <a class="nav-link" href="index.html">proBook</a>
         <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
@@ -60,7 +60,7 @@
             </div>
             <div>
                 <div>
-					<button id="submitTypeBookmark" class="form-control" name="saveForm" type="button" value="Submit" ;">Submit</button>
+					<button id="submitTypeBookmark" class="form-control" name="viewBookmarksByType form" type="button" value="Submit" onclick="getBookmarksByType();">Submit</button>
 				</div>
             </div>
         </form>
@@ -72,7 +72,6 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="scripts/bookmark_scripts.js"></script>
     <script src="scripts/bookmarkTable.js"></script>
-    <script src="scripts/type_scripts.js"></script>
     <script src="main.js"></script>
 
 </body>

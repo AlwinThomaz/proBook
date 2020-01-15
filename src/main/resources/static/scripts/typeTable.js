@@ -90,11 +90,14 @@ function deleteType(typeId) {
         });
 
 }
-
+let done = false;
 function clickable() {
+    if(done) {
+        return;
+    }
     $(document).on('click', '.edit', function () {
         $(this).parent().siblings('td.data').each(function () {
-            let content = $(this).html();
+            let content = $(this)[0].innerText;
             $(this).html('<input value="' + content + '" />');
         });
 
@@ -123,5 +126,13 @@ function clickable() {
         $(this).parents('tr').remove();
     });
 
+    done = true;
 }
+
+    function clearTableBody() {
+        tableBody.innerHTML = "";
+    }
+
+
+
 

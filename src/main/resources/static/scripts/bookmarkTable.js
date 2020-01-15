@@ -9,17 +9,17 @@ function addBookmarkToTable(newEntry, aRow) {
     let bookmarkName = document.createElement('td');
     bookmarkName.innerHTML = newEntry.name;
     bookmarkName.setAttribute("class", "data");
-    bookmarkName.setAttribute("id", "bookmarkName");
+    bookmarkName.setAttribute("id", "bookmarkName"+newEntry.id);
 
     let bookmarkDescription = document.createElement('td');
     bookmarkDescription.innerHTML = newEntry.description;
     bookmarkDescription.setAttribute("class", "data");
-    bookmarkDescription.setAttribute("id", "bookmarkDescription");
+    bookmarkDescription.setAttribute("id", "bookmarkDescription"+newEntry.id);
 
     let bookmarkUrl = document.createElement('td');
     bookmarkUrl.innerHTML = newEntry.url;
     bookmarkUrl.setAttribute("class", "data");
-    bookmarkUrl.setAttribute("id", "bookmarkUrl");
+    bookmarkUrl.setAttribute("id", "bookmarkUrl"+newEntry.id);
 
     let buttonCell = document.createElement('td');
 
@@ -76,11 +76,38 @@ function readAllBookmarks() {
 
 }
 
+function getBookmarksByType() {
+    let typeName = findTypeName();
+    axios.get("http://localhost:8080/bookmark/getBookmarksByType?name=" +typeName)
+        .then((response) => {
+            console.log(response.status)
+            let data = (response.data);
+            console.log(data);
+            console.table(data);
+            clearTableBody();
+
+            for (let bookmark of data) {
+                console.log(bookmark);
+                let aRow = document.createElement('tr');
+                tableBody.appendChild(aRow);
+                addBookmarkToTable(bookmark, aRow);
+            }
+            clickable();
+        }).catch((error) => { console.log(error.message) });
+
+}
+
+function findTypeName() {
+    let e = document.getElementById('typeList');
+    let typeName = e.selectedOptions[0].innerHTML;
+    return typeName;
+}
+
 
 function updateBookmark(bookmarkId) {
-    let bookmarkName = document.getElementById('bookmarkName').innerText;
-    let bookmarkUrl = document.getElementById('bookmarkUrl').innerText;
-    let bookmarkDescription = document.getElementById('bookmarkDescription').innerText;
+    let bookmarkName = document.getElementById('bookmarkName'+bookmarkId).innerText;
+    let bookmarkUrl = document.getElementById('bookmarkUrl'+bookmarkId).innerText;
+    let bookmarkDescription = document.getElementById('bookmarkDescription'+bookmarkId).innerText;
 
     const data = {
         "name": bookmarkName,
@@ -108,11 +135,15 @@ function deleteBookmark(bookmarkId) {
         });
 
 }
-
+let done = false;
 function clickable() {
+    if(done) {
+        return;
+    }
     $(document).on('click', '.edit', function () {
         $(this).parent().siblings('td.data').each(function () {
-            let content = $(this).html();
+            debugger;
+            let content = $(this)[0].innerText;
             $(this).html('<input value="' + content + '" />');
         });
 
@@ -141,5 +172,10 @@ function clickable() {
         $(this).parents('tr').remove();
     });
 
+    done = true;
 }
+
+    function clearTableBody() {
+        tableBody.innerHTML = "";
+    }
 
