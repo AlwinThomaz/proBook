@@ -18,7 +18,9 @@ import com.project.probook.exceptions.BookmarkDuplicateException;
 import com.project.probook.exceptions.BookmarkInvalidEntryException;
 import com.project.probook.exceptions.BookmarkNotFoundException;
 import com.project.probook.persistence.domain.Bookmark;
+import com.project.probook.persistence.domain.Type;
 import com.project.probook.service.BookmarkService;
+import com.project.probook.service.TypeService;
 
 @RestController
 @RequestMapping("/bookmark")
@@ -31,6 +33,9 @@ public class BookmarkController {
 		super();
 		this.service = service;
 	}
+	
+	@Autowired
+	public TypeService typeService;
 
 	@PostMapping("/createBookmark")
 	public Bookmark createBookmark(@RequestBody Bookmark bookmark) throws BookmarkInvalidEntryException, BookmarkDuplicateException {
@@ -51,6 +56,13 @@ public class BookmarkController {
 	public List<Bookmark> getAllBookmarks() {
 		return this.service.readBookmarks();
 	}
+	
+	@GetMapping("/getBookmarksByType")
+	public List<Bookmark> getBookmarksByType(@PathParam("name") String name) {
+		List<Type> listOfType= typeService.findOneByName(name);
+		return listOfType.get(0).getBookmarks(); 
+	}
+	
 
 	@PutMapping("/updateBookmark")
 	public Bookmark updateBookmark(@PathParam("id") Long id, @RequestBody Bookmark bookmark)

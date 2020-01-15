@@ -44,6 +44,7 @@ public class TypeService {
 	public Type findTypeById(Long id) throws TypeNotFoundException {
 		return this.repo.findById(id).orElseThrow(() -> new TypeNotFoundException());
 	}
+	
 
 	public boolean findRepeatedType(Type type) {
 		return this.readTypes().contains(type);
@@ -81,6 +82,9 @@ public class TypeService {
 
 		return this.repo.saveAndFlush(toUpdate);
 	}
-
+	
+	public List<Type> findOneByName(String name) {
+	return this.repo.findByName(name);
+	}
 
 }

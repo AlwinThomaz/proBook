@@ -12,7 +12,7 @@ import com.project.probook.persistence.domain.Type;
 public interface TypeRepo extends JpaRepository<Type, Long> {
 	
 	List<Type> findByName(String name);
-
+	
 	
 	
 

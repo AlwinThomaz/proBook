@@ -76,6 +76,7 @@ function readAllBookmarks() {
 
 }
 
+
 function updateBookmark(bookmarkId) {
     let bookmarkName = document.getElementById('bookmarkName').innerText;
     let bookmarkUrl = document.getElementById('bookmarkUrl').innerText;
