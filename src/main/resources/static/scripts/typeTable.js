@@ -9,7 +9,7 @@ function addTypeToTable(newEntry, aRow) {
     let typeName = document.createElement('td');
     typeName.innerHTML = newEntry.name;
     typeName.setAttribute("class", "data");
-    typeName.setAttribute("id", "typeName");
+    typeName.setAttribute("id", "typeName"+newEntry.id);
 
     let buttonCell = document.createElement('td');
 
@@ -64,7 +64,7 @@ function readAllTypes() {
 }
 
 function updateType(typeId) {
-    let typeName = document.getElementById('typeName').innerText;
+    let typeName = document.getElementById('typeName'+typeId).innerText;
 
     const data = {
         "name": typeName
