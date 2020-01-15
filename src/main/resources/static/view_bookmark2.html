@@ -11,7 +11,7 @@
 
 </head>
 
-<body onload="readAllBookmarks();">
+<body onload="readAllBookmarks(); populateSelect()">
     <nav class="navbar navbar-expand-md">
         <a class="nav-link" href="index.html">proBook</a>
         <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
@@ -37,28 +37,41 @@
 
     <header class="page-header header container-fluid">
         <div class="overlay"></div>
-        <div class="caption" >Saved Bookmarks</div>
+        <div class="caption">Saved Bookmarks</div>
         <div class="container" id="bookmarkTableContainer"></div>
-            <table id="bookmarkTable" class="table data">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>URL</th>
-                    </tr>
-                </thead>
-                <tbody id="bookmarkTableBody"> 
-                </tbody>
-            </table>
+        <table id="bookmarkTable" class="table data">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>URL</th>
+                </tr>
+            </thead>
+            <tbody id="bookmarkTableBody">
+            </tbody>
+        </table>
+        </div>
+        <div>
+            <label for="typeList"> Select a Type </label>
+            <div>
+                <select id="typeList" class="form-control"></select>
+            </div>
+        </div>
+        <div>
+            <div>
+                <button id="bookmarksByType" class="form-control" name="typeSelect" type="button" value="Submit"
+                    ;">Submit</button>
+            </div>
         </div>
     </header>
 
 
     <script src="jquery-3.3.1.min.js"></script>
-	<script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="scripts/bookmark_scripts.js"></script>
     <script src="scripts/bookmarkTable.js"></script>
+    <script src="scripts/type_scripts.js"></script>
     <script src="main.js"></script>
 
 </body>
