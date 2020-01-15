@@ -11,58 +11,64 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.project.probook.exceptions.TypeDuplicateException;
+import com.project.probook.exceptions.TypeInvalidEntryException;
+import com.project.probook.exceptions.TypeNotFoundException;
+import com.project.probook.persistence.domain.Type;
+import com.project.probook.persistence.repo.TypeRepo;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class TypeServiceIntegrationTest {
 
 	@Autowired
-	private BookmarkService service;
+	private TypeService service;
 	
 	@Autowired
-	private BookmarkRepo repo;
+	private TypeRepo repo;
 
-	private Bookmark testBookmark;
+	private Type testType;
 
-	private Bookmark testBookmarkWithId;
+	private Type testTypeWithId;
 
 	@Before
 	public void init() {
-		this.testBookmark = new Bookmark("AlgoExpert", "Interview Preparation resource", "www.algoexpert.com");
+		this.testType = new Type("Test");
 		
 		this.repo.deleteAll();
 		
-		this.testBookmarkWithId = this.repo.save(this.testBookmark);
+		this.testTypeWithId = this.repo.save(this.testType);
 	}
 	
 	@Test
-	public void testCreateBookmark() throws BookmarkInvalidEntryException, BookmarkDuplicateException {
+	public void testCreateType() throws TypeInvalidEntryException, TypeDuplicateException {
 		this.repo.deleteAll();
-		assertEquals(this.testBookmarkWithId, this.repo.save(this.testBookmark));
+		assertEquals(this.testTypeWithId, this.repo.save(this.testType));
 	}
 
 	@Test
-	public void testDeleteBookmark() throws BookmarkNotFoundException {
-		assertThat(this.service.deleteBookmark(this.testBookmarkWithId.getId())).isFalse();
+	public void testDeleteType() throws TypeNotFoundException {
+		assertThat(this.service.deleteType(this.testTypeWithId.getId())).isFalse();
 	}
 
 	@Test
-	public void testFindBookmarkById() throws BookmarkNotFoundException {
-		assertThat(this.service.findBookmarkById(this.testBookmarkWithId.getId())).isEqualTo(this.testBookmarkWithId);
+	public void testFindTypeById() throws TypeNotFoundException {
+		assertThat(this.service.findTypeById(this.testTypeWithId.getId())).isEqualTo(this.testTypeWithId);
 	}
 
 	@Test
-	public void testReadBookmarks() {
-		assertThat(this.service.readBookmarks()).isEqualTo(Arrays.asList(new Bookmark[] { this.testBookmarkWithId }));
+	public void testReadTypes() {
+		assertThat(this.service.readTypes()).isEqualTo(Arrays.asList(new Type[] { this.testTypeWithId }));
 	}
 
 	@Test
-	public void testUpdateBookmark() throws BookmarkNotFoundException {
-		Bookmark newBookmark = new Bookmark("Oracle", "Resource to find all information on Java", "www.oracle.com");
-		Bookmark updatedBookmark = new Bookmark(newBookmark.getName(), newBookmark.getDescription(), newBookmark.getUrl());
-		updatedBookmark.setId(this.testBookmarkWithId.getId());
+	public void testUpdateType() throws TypeNotFoundException {
+		Type newType = new Type("Test123");
+		Type updatedType = new Type(newType.getName());
+		updatedType.setId(this.testTypeWithId.getId());
 
-		assertThat(this.service.updateBookmark(newBookmark, this.testBookmarkWithId.getId())).isEqualTo(updatedBookmark);
+		assertThat(this.service.updateType(newType, this.testTypeWithId.getId())).isEqualTo(updatedType);
 	}
 
 }
