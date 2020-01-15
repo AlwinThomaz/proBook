@@ -1,12 +1,11 @@
 package com.project.probook.rest;
 
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.junit.After;
@@ -22,9 +21,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.project.probook.persistence.domain.Bookmark;
 import com.project.probook.persistence.domain.Type;
-import com.project.probook.persistence.repo.BookmarkRepo;
 import com.project.probook.persistence.repo.TypeRepo;
 
 
