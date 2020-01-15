@@ -45,7 +45,7 @@ function addTypeToTable(newEntry, aRow) {
 
 
 function readAllTypes() {
-    axios.get("http://localhost:8080/type/getAllTypes")
+    axios.get("/proBook/type/getAllTypes")
         .then((response) => {
             console.log(response.status)
             let data = (response.data);
@@ -69,7 +69,7 @@ function updateType(typeId) {
     const data = {
         "name": typeName
     }
-    axios.put("http://localhost:8080/type/updateType?id=" + typeId, data)
+    axios.put("/proBook/type/updateType?id=" + typeId, data)
         .then((response) => {
             console.log(response)
         }).catch((error) => { console.log(error.message) });
@@ -79,7 +79,7 @@ function updateType(typeId) {
 
 function deleteType(typeId) {
     console.log(typeId);
-    axios.delete("http://localhost:8080/type/deleteType/" + typeId)
+    axios.delete("/proBook/type/deleteType/" + typeId)
         .then((response) => {
             location.reload();
             console.log(response);

@@ -7,7 +7,7 @@ function createTypes() {
     const data = {
         "name": typeName
     }
-    axios.post('http://localhost:8080/type/createType', data)
+    axios.post('/proBook/type/createType', data)
     .then((response) => {
         console.log(response);
     }).catch(error => {
@@ -18,7 +18,7 @@ function createTypes() {
 
 function populateSelect() {
 
-    axios.get('http://localhost:8080/type/getAllTypes'
+    axios.get('/proBook/type/getAllTypes'
     ).then((response) => {
         response.data.forEach(addToDropDown);
         console.log(response);

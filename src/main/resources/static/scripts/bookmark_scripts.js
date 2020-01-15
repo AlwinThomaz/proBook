@@ -10,7 +10,7 @@ function createBookmark() {
         "description": bookmarkDescription,
         "url": bookmarkUrl
     }
-    axios.post('http://localhost:8080/bookmark/createBookmark', data)
+    axios.post('/proBook/bookmark/createBookmark', data)
         .then((response) => {
 
             addBookmarkToType(response.data)
@@ -23,7 +23,7 @@ function createBookmark() {
 
 function addBookmarkToType(bookmark) {
     let typeId = findTypeId();
-    axios.patch('http://localhost:8080/type/update/' + typeId, bookmark)
+    axios.patch('/proBook/type/update/' + typeId, bookmark)
         .then((response) => { console.log(response.data) })
         .catch((error) => {
             console.error(error);

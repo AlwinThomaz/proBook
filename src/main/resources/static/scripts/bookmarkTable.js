@@ -58,7 +58,7 @@ function addBookmarkToTable(newEntry, aRow) {
 
 
 function readAllBookmarks() {
-    axios.get("http://localhost:8080/bookmark/getAllBookmarks")
+    axios.get("/proBook/bookmark/getAllBookmarks")
         .then((response) => {
             console.log(response.status)
             let data = (response.data);
@@ -78,7 +78,7 @@ function readAllBookmarks() {
 
 function getBookmarksByType() {
     let typeName = findTypeName();
-    axios.get("http://localhost:8080/bookmark/getBookmarksByType?name=" +typeName)
+    axios.get("/proBook/bookmark/getBookmarksByType?name=" +typeName)
         .then((response) => {
             console.log(response.status)
             let data = (response.data);
@@ -114,7 +114,7 @@ function updateBookmark(bookmarkId) {
         "description": bookmarkDescription,
         "url": bookmarkUrl
     }
-    axios.put("http://localhost:8080/bookmark/updateBookmark?id=" + bookmarkId, data)
+    axios.put("/proBook/bookmark/updateBookmark?id=" + bookmarkId, data)
         .then((response) => {
             console.log(response)
         }).catch((error) => { console.log(error.message) });
@@ -124,7 +124,7 @@ function updateBookmark(bookmarkId) {
 
 function deleteBookmark(bookmarkId) {
     console.log(bookmarkId);
-    axios.delete("http://localhost:8080/bookmark/deleteBookmark/" + bookmarkId)
+    axios.delete("/proBook/bookmark/deleteBookmark/" + bookmarkId)
         .then((response) => {
             location.reload();
             console.log(response);
