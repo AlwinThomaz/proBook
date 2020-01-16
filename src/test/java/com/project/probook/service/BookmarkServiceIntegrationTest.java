@@ -53,10 +53,10 @@ public class BookmarkServiceIntegrationTest {
 	public void init() {
 		this.repo.deleteAll();
 		
-		this.testBookmark = new Bookmark("AlgoExpert", "Interview Preparation resource", "www.algoexpert.com");
+		this.testBookmark = new Bookmark("AlgoExpert", "Interview Preparation resource", "http://www.algoexpert.com");
 		this.testBookmarkWithId = this.repo.save(this.testBookmark);
 		
-		this.testBookmark2 = new Bookmark("Java", "Learn Java", "www.java.com");
+		this.testBookmark2 = new Bookmark("Java", "Learn Java", "http://www.java.com");
 		this.testBookmark2WithId = new Bookmark(this.testBookmark2.getName(), this.testBookmark2.getDescription(), this.testBookmark2.getUrl());
 		this.testBookmark2WithId.setId(this.id);
 		
