@@ -22,7 +22,7 @@ public class BookmarkService {
 	}
 
 	public Bookmark createBookmark(Bookmark bookmark) throws BookmarkInvalidEntryException, BookmarkDuplicateException {
-		validateBookmark(bookmark);
+		validateBookmark(bookmark, true);
 		return this.repo.save(bookmark);
 	}
 	
@@ -55,7 +55,7 @@ public class BookmarkService {
 		return this.repo.save(toUpdate);
 	}
 	
-	public Boolean validateBookmark(Bookmark bookmark) throws BookmarkInvalidEntryException, BookmarkDuplicateException {
+	public Boolean validateBookmark(Bookmark bookmark, boolean newBookmark) throws BookmarkInvalidEntryException, BookmarkDuplicateException {
 		if (bookmark.getName().length() > 50) {
 			throw new BookmarkInvalidEntryException();
 		}
