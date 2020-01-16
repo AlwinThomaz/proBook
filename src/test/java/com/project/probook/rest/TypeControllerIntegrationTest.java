@@ -45,7 +45,9 @@ public class TypeControllerIntegrationTest {
 	
 	private Type testTypeWithId;
 	
+	private Type testType2;
 
+	private Type testType2WithId;
 	
 	private long id;	
 	
@@ -56,6 +58,10 @@ public class TypeControllerIntegrationTest {
 		this.testType = new Type("Programming");
 		this.testTypeWithId = this.repo.save(this.testType);
 		this.id = this.testTypeWithId.getId();
+		
+		this.testType2 = new Type("Articles");	
+		this.testType2WithId = new Type(this.testType2.getName());
+		this.testType2WithId.setId(this.testTypeWithId.getId() + 1);
 
 	}
 	
@@ -69,9 +75,9 @@ public class TypeControllerIntegrationTest {
 	public void createTypeTest() throws Exception {
 		String result = this.mock
 				.perform(request(HttpMethod.POST, "/type/createType").contentType(MediaType.APPLICATION_JSON)
-				.content(this.mapper.writeValueAsString(this.testType)).accept(MediaType.APPLICATION_JSON))
+				.content(this.mapper.writeValueAsString(this.testType2)).accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
-		assertEquals(this.mapper.writeValueAsString(this.testTypeWithId), result);
+		assertEquals(this.mapper.writeValueAsString(this.testType2WithId), result);
 	}
 	
 	@Test
