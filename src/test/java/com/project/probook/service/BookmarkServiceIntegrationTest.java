@@ -133,7 +133,7 @@ public class BookmarkServiceIntegrationTest {
 	}
 	
 	@Test(expected = BookmarkInvalidEntryException.class)
-	public void validateExistingBookmarkTitleTooLongTest() throws BookmarkInvalidEntryException, BookmarkDuplicateException {
+	public void validateExistingBookmarkNameTooLongTest() throws BookmarkInvalidEntryException, BookmarkDuplicateException {
 		this.testBookmarkWithId.setName(this.name51);
 		this.service.validateBookmark(testBookmarkWithId, false);
 		fail();
