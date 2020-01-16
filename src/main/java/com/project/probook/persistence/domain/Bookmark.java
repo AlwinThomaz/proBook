@@ -62,11 +62,11 @@ public class Bookmark {
 		this.url = url;
 	}
 
-	@Override
-	public String toString() {
-		return "Bookmark [id=" + id + ", name=" + name + ", description=" + description + ", url=" + url
-				+ "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Bookmark [id=" + id + ", name=" + name + ", description=" + description + ", url=" + url
+//				+ "]";
+//	}
 
 //	@Override
 //	public int hashCode() {

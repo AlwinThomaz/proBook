@@ -98,6 +98,12 @@ public class BookmarkControllerUnitTest {
 
 		verify(service, times(1)).readBookmarks();
 	}
+	
+	@Test
+	public void getBookmarksByTypeTest() {
+		
+		
+	}
 
 	
 }

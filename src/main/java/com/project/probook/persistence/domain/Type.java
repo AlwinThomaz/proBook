@@ -67,10 +67,10 @@ public class Type {
 		this.bookmarks = bookmarks;
 	}
 
-	@Override
-	public String toString() {
-		return "Type [id=" + id + ", name=" + name + ", bookmarks=" + bookmarks + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Type [id=" + id + ", name=" + name + ", bookmarks=" + bookmarks + "]";
+//	}
 
 //	@Override
 //	public int hashCode() {
