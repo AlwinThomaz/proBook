@@ -21,6 +21,7 @@ import com.project.probook.exceptions.BookmarkInvalidEntryException;
 import com.project.probook.exceptions.BookmarkNotFoundException;
 import com.project.probook.persistence.domain.Bookmark;
 import com.project.probook.service.BookmarkService;
+import com.project.probook.service.TypeService;
 
 
 @RunWith(SpringRunner.class)
@@ -32,6 +33,9 @@ public class BookmarkControllerUnitTest {
 
 	@Mock
 	private BookmarkService service;
+	
+	@Mock
+	private TypeService typeService;
 
 	private List<Bookmark> bookmarkList;
 
@@ -98,13 +102,6 @@ public class BookmarkControllerUnitTest {
 
 		verify(service, times(1)).readBookmarks();
 	}
-	
-	@Test
-	public void getBookmarksByTypeTest() {
-		
-		
-	}
-
 	
 }
 
