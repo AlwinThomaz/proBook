@@ -1,9 +1,9 @@
 package com.project.probook.rest;
 
-//import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.junit.Assert.assertEquals;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +42,7 @@ public class BookmarkControllerIntegrationTest {
 	private Bookmark testBookmark;
 
 	private Bookmark testBookmarkWithId;
+	
 
 	@Before
 	public void init() {

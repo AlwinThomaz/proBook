@@ -29,7 +29,7 @@ public class TypeService {
 	}
 
 	public Type createType(Type type) throws TypeInvalidEntryException, TypeDuplicateException {
-		validateType(type);
+		validateType(type, true);
 		return this.repo.save(type);
 	}
 
@@ -60,7 +60,7 @@ public class TypeService {
 		return this.repo.save(toUpdate);
 	}
 	
-	public boolean validateType(Type type) throws TypeInvalidEntryException, TypeDuplicateException {
+	public boolean validateType(Type type, boolean newType) throws TypeInvalidEntryException, TypeDuplicateException {
 		if (type.getName().length() > 50) {
 			throw new TypeInvalidEntryException();
 		} else if (findRepeatedType(type)) {
