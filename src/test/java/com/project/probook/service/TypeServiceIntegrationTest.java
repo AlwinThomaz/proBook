@@ -31,20 +31,31 @@ public class TypeServiceIntegrationTest {
 	private Type testType;
 
 	private Type testTypeWithId;
+	
+	private Type testType2;
+
+	private Type testType2WithId;
+	
+	private final Long id = 2L;
 
 	@Before
 	public void init() {
-		this.testType = new Type("Test");
+		this.testType = new Type("Programming");
 		
 		this.repo.deleteAll();
 		
 		this.testTypeWithId = this.repo.save(this.testType);
+		
+		this.testType2 = new Type("Articles");
+		this.testType2WithId = new Type(this.testType2.getName());
+		this.testType2WithId.setId(this.testTypeWithId.getId() + 1);
+		
 	}
 	
 	@Test
 	public void testCreateType() throws TypeInvalidEntryException, TypeDuplicateException {
 		this.repo.deleteAll();
-		assertEquals(this.testTypeWithId, this.repo.save(this.testType));
+		assertEquals(this.testType2WithId, this.repo.save(this.testType2));
 	}
 
 	@Test
