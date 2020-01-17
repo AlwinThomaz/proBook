@@ -2,6 +2,7 @@ package com.project.probook.selenium.tests;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -25,7 +26,7 @@ public class TypeFunctionalitytests {
 
 	private String typeName = "Test";
 	private String editedTypeName = "hello";
-
+	
 	private String destination;
 
 	@Before
@@ -41,36 +42,37 @@ public class TypeFunctionalitytests {
 
 		this.destination = Constants.HOST;
 	}
+	
+//	@After
+//    public void tearDown() throws Exception {
+//        this.driver.close();
+//    }
 
 	@Test
-	public void createTypeTest() throws InterruptedException {
+	public void acreateTypeTest() throws InterruptedException {
 		this.driver.get(this.destination + Constants.ADD_TYPE);
 		this.addTypePage.submitType(this.typeName);
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		String alert = this.driver.switchTo().alert().getText();
 		assertEquals("Type Created", alert);
 		this.driver.switchTo().alert().accept();
 
-	}
-
-	@Test
-	public void editTypeTest() throws InterruptedException {
+	
 		this.driver.get(this.destination + Constants.VIEW_TYPE);
-		this.viewTypePage.editType(this.editedTypeName);
-		Thread.sleep(5000);
-		String alert = this.driver.switchTo().alert().getText();
-		assertEquals("Type Updated", alert);
+		this.viewTypePage.editType();
+		Thread.sleep(2000);
+		
+		
+		this.viewTypePage.saveEditType(this.editedTypeName);
+		String alert2 = this.driver.switchTo().alert().getText();
+		assertEquals("Type Updated", alert2);
 		this.driver.switchTo().alert().accept();
 
-	}
-	
-	@Test
-	public void deleteTypeTest() throws InterruptedException {
-		this.driver.get(this.destination + Constants.VIEW_TYPE);
+
 		this.viewTypePage.deleteType();
-		Thread.sleep(5000);
-		String alert = this.driver.switchTo().alert().getText();
-		assertEquals("Type Deleted", alert);
+		Thread.sleep(2000);
+		String alert3 = this.driver.switchTo().alert().getText();
+		assertEquals("Type Deleted", alert3);
 		this.driver.switchTo().alert().accept();
 
 	}
