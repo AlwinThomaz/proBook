@@ -142,7 +142,6 @@ function clickable() {
     }
     $(document).on('click', '.edit', function () {
         $(this).parent().siblings('td.data').each(function () {
-            debugger;
             let content = $(this)[0].innerText;
             $(this).html('<input value="' + content + '" />');
         });
@@ -160,6 +159,7 @@ function clickable() {
         });
         console.log($(this).attr("id"));
         updateBookmark($(this).attr("id"));
+        alert("Bookmark Updated");
         $(this).siblings('.edit').show();
         $(this).siblings('.delete').show();
         $(this).hide();
@@ -169,6 +169,7 @@ function clickable() {
 
     $(document).on('click', '.delete', function () {
         deleteBookmark($(this).attr("id"));
+        alert("Bookmark Deleted")
         $(this).parents('tr').remove();
     });
 
