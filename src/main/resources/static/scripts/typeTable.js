@@ -114,6 +114,7 @@ function clickable() {
         });
         console.log($(this).attr("id"));
         updateType($(this).attr("id"));
+        alert("Type Updated");
         $(this).siblings('.edit').show();
         $(this).siblings('.delete').show();
         $(this).hide();
@@ -123,6 +124,7 @@ function clickable() {
 
     $(document).on('click', '.delete', function () {
         deleteType($(this).attr("id"));
+        alert("Type Deleted");
         $(this).parents('tr').remove();
     });
 
