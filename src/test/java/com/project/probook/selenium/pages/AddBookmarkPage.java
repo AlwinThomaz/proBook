@@ -14,15 +14,22 @@ public class AddBookmarkPage {
 	@FindBy(id = "bookmarkUrl")
 	private WebElement bookmarkUrlInput;
 	
-	@FindBy(id = "typeList")
-	private WebElement Input;
+	@FindBy(xpath = "/html/body/header/div[2]/form/div[4]/div/select")
+	private WebElement dropDownType;
 	
-	@FindBy(id = "saveType")
-	private WebElement typeSubmitButton;
+	@FindBy(xpath = "/html/body/header/div[2]/form/div[4]/div/select/option[1]")
+	private WebElement optionValue;
 	
-	public void enterType(String type) {
-		this.typeInput.sendKeys(type);
-		this.typeSubmitButton.click();
+	@FindBy(id = "saveBookmark")
+	private WebElement bookmarkSubmitButton;
+	
+	public void submitBookmark(String bookmarkName, String bookmarkDescription, String bookmarkUrl) {
+		this.bookmarkNameInput.sendKeys(bookmarkName);
+		this.bookmarkDescriptionInput.sendKeys(bookmarkDescription);
+		this.bookmarkUrlInput.sendKeys(bookmarkUrl);
+		this.dropDownType.click();
+		this.optionValue.click();
+		this.bookmarkSubmitButton.click();
 	}
 
 }

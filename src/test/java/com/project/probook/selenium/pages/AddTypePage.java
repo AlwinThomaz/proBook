@@ -11,8 +11,8 @@ public class AddTypePage {
 	@FindBy(id = "saveType")
 	private WebElement typeSubmitButton;
 	
-	public void enterType(String type) {
-		this.typeNameInput.sendKeys(type);
+	public void submitType(String typeName) {
+		this.typeNameInput.sendKeys(typeName);
 		this.typeSubmitButton.click();
 	}
 	
