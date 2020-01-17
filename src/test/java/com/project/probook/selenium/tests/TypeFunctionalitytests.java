@@ -1,7 +1,6 @@
 package com.project.probook.selenium.tests;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -46,7 +45,7 @@ public class TypeFunctionalitytests {
 		this.addTypePage.submitType(this.typeName);
 		Thread.sleep(2000);
 		String alert = this.driver.switchTo().alert().getText();
-		assertEquals("Type:" +this.typeName+ "has been added", alert);
+		assertEquals("Type: " + this.typeName + " has been added", alert);
 		this.driver.switchTo().alert().accept();
 	}
 
