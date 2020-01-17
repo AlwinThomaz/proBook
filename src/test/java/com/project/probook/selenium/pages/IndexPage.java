@@ -37,7 +37,7 @@ public class IndexPage {
 		this.viewBookmarkNav.click();
 	}
 	
-	public void goTypePage() {
+	public void goViewTypePage() {
 		this.viewTypeNav.click();
 	}
 	

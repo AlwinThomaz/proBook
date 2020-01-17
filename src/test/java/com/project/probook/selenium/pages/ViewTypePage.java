@@ -17,9 +17,9 @@ public class ViewTypePage {
 	@FindBy(xpath = "/html/body/header/table/tbody/tr/td[2]/button[3]")
 	private WebElement typeDeleteButton;
 	
-	public void editType(String typeName) {
+	public void editType(String editedTypeName) {
 		this.typeEditButton.click();
-		this.typeEditName.sendKeys(typeName);
+		this.typeEditName.sendKeys(editedTypeName);
 		this.typeSaveEditButton.click();
 	}
 	
