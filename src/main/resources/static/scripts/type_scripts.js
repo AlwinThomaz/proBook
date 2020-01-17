@@ -10,6 +10,8 @@ function createTypes() {
     axios.post('http://localhost:8080/type/createType', data)
     .then((response) => {
         console.log(response);
+        alert("Type Created")
+        location.reload();
     }).catch(error => {
         console.log(error);
     })

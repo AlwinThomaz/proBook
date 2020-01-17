@@ -14,6 +14,8 @@ function createBookmark() {
         .then((response) => {
 
             addBookmarkToType(response.data)
+            alert("Bookmark Created");
+            location.reload();
 
         }).catch((error) => {
             console.error(error);
