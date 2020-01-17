@@ -1,9 +1,9 @@
 package com.project.probook.rest;
 
-//import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.junit.Assert.assertEquals;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,12 +42,13 @@ public class BookmarkControllerIntegrationTest {
 	private Bookmark testBookmark;
 
 	private Bookmark testBookmarkWithId;
+	
 
 	@Before
 	public void init() {
 		this.repo.deleteAll();
 
-		this.testBookmark = new Bookmark("AlgoExpert", "Interview Preparation resource", "www.algoexpert.com");
+		this.testBookmark = new Bookmark("AlgoExpert", "Interview Preparation resource", "http://www.algoexpert.com");
 		this.testBookmarkWithId = this.repo.save(this.testBookmark);
 		this.id = this.testBookmarkWithId.getId();
 	}
@@ -82,7 +83,7 @@ public class BookmarkControllerIntegrationTest {
 
 	@Test
 	public void testUpdateBookmark() throws Exception {
-		Bookmark newBookmark = new Bookmark("Oracle", "Resource to find all information on Java", "www.oracle.com");
+		Bookmark newBookmark = new Bookmark("Oracle", "Resource to find all information on Java", "http://www.oracle.com");
 		Bookmark updatedBookmark = new Bookmark(newBookmark.getName(), newBookmark.getDescription(), newBookmark.getUrl());
 		updatedBookmark.setId(this.id);
 

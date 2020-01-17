@@ -1,6 +1,8 @@
 package com.project.probook.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.assertj.core.util.Arrays;
@@ -37,6 +39,8 @@ public class TypeServiceIntegrationTest {
 	private Type testType2WithId;
 	
 	private final Long id = 2L;
+	
+	private String name51 = "udsx6umwunzjz6s00fvc0jmlv26e8rj8k7cj5t2grg83h1nnblj";
 
 	@Before
 	public void init() {
@@ -81,6 +85,35 @@ public class TypeServiceIntegrationTest {
 
 		assertThat(this.service.updateType(newType, this.testTypeWithId.getId())).isEqualTo(updatedType);
 	}
+	
+	@Test
+	public void findTypeByIdTest() throws TypeNotFoundException {
+		assertThat(this.testTypeWithId).isEqualTo(this.service.findTypeById(this.testTypeWithId.getId()));
+	}
+	
+	@Test
+	public void getTypesTest() throws TypeInvalidEntryException, TypeDuplicateException {
+		this.testType2WithId = this.service.createType(this.testType2);
+		assertThat(Arrays.asList(new Type[] {this.testTypeWithId, this.testType2WithId})).isEqualTo(this.service.readTypes());
+	}
+	
+	@Test
+	public void findRepeatedTypeExistsTest() {
+		assertTrue(this.service.findRepeatedType(this.testType));
+	}
+	
+	@Test
+	public void findRepeatedTypeDoesNotExistTest() {
+		assertFalse(this.service.findRepeatedType(this.testType2));
+	}
+	
+	
+	@Test
+	public void validateNewTypeTest() throws TypeInvalidEntryException, TypeDuplicateException {
+		assertTrue(this.service.validateType(testType2WithId, true));
+	}
+
+
 
 }
 

@@ -65,7 +65,7 @@ public class BookmarkService {
 		else if (bookmark.getDescription().length() > 250) {
 			throw new BookmarkInvalidEntryException();
 		}
-		else if (!bookmark.getUrl().contains("www.")) {
+		else if (!(bookmark.getUrl().contains("http://") || bookmark.getUrl().contains("https://"))) {
 			throw new BookmarkInvalidEntryException();
 		}
 
