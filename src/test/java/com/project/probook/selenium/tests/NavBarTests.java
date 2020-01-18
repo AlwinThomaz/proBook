@@ -3,12 +3,20 @@ package com.project.probook.selenium.tests;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import com.project.probook.selenium.constants.Constants;
 import com.project.probook.selenium.pages.AddBookmarkPage;
@@ -17,6 +25,9 @@ import com.project.probook.selenium.pages.IndexPage;
 import com.project.probook.selenium.pages.ViewBookmarkPage;
 import com.project.probook.selenium.pages.ViewTypePage;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@RunWith(SpringRunner.class)
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class NavBarTests {
 
 	private WebDriver driver;
@@ -28,6 +39,13 @@ public class NavBarTests {
 	private ViewTypePage viewTypePage;
 
 	private String destination;
+	
+	@LocalServerPort
+	private int port;
+	
+	
+	@Value("${server.servlet.context-path}")
+	private String context;
 
 	@Before
 	public void setup() {
@@ -38,7 +56,7 @@ public class NavBarTests {
 		this.driver.manage().window().setSize(new Dimension(1600, 700));
 
 		this.indexPage = PageFactory.initElements(this.driver, IndexPage.class);
-		this.destination = Constants.HOST;
+		this.destination = Constants.HOST + port + context;
 	}
 
 	@Test
