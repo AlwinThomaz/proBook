@@ -43,6 +43,7 @@ public class FunctionalityTests {
 	
 	private String destination;
 
+	
 	@Before
 	public void setup() {
 		System.setProperty(Constants.PROPERTY, Constants.PATH);
