@@ -38,10 +38,6 @@ public class NavBarTests {
 		this.driver.manage().window().setSize(new Dimension(1600, 700));
 
 		this.indexPage = PageFactory.initElements(this.driver, IndexPage.class);
-		this.addTypePage = PageFactory.initElements(this.driver, AddTypePage.class);
-		this.addBookmarkPage = PageFactory.initElements(this.driver, AddBookmarkPage.class);
-		this.viewBookmarkPage = PageFactory.initElements(this.driver, ViewBookmarkPage.class);
-		this.viewTypePage = PageFactory.initElements(this.driver, ViewTypePage.class);
 		this.destination = Constants.HOST;
 	}
 
