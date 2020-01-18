@@ -78,6 +78,7 @@ public class TypeServiceUnitTest {
 		this.testBookmark = new Bookmark("test", "test123", "www.test.com");
 	}
 	
+	
 	@Test
 	public void createTypeTest() throws TypeInvalidEntryException, TypeDuplicateException {
 		when(this.repo.save(testType)).thenReturn(testTypeWithId);
