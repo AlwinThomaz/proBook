@@ -177,6 +177,14 @@ body {
     outline: 0;
     border-color: #4697e4;
   }
+
+  #typeList {
+    width: 50%;
+  }
+
+  #saveBookmark {
+    width: 50%;
+  }
   
   @media (max-width: 600px) {
     form > div {

@@ -171,3 +171,11 @@ body {
 .delete:hover {
     background: #e23317;
 }
+
+#typeList {
+	width: 50%;
+}
+
+#submitTypeBookmark {
+	width: 50%;
+}
