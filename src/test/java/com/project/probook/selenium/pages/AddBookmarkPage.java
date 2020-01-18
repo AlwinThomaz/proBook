@@ -20,7 +20,7 @@ public class AddBookmarkPage {
 	@FindBy(xpath = "/html/body/header/div[2]/form/div[4]/div/select/option[1]")
 	private WebElement optionValue;
 	
-	@FindBy(id = "saveBookmark")
+	@FindBy(xpath = "/html/body/header/div[2]/form/div[5]/div/button")
 	private WebElement bookmarkSubmitButton;
 	
 	public void submitBookmark(String bookmarkName, String bookmarkDescription, String bookmarkUrl) {

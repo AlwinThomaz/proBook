@@ -11,10 +11,10 @@ public class ViewBookmarkPage {
 	@FindBy(xpath = "/html/body/header/form/div[1]/div/select/option[1]")
 	private WebElement optionValueSelect;
 	
-	@FindBy(id = "saveTypeBookmark")
+	@FindBy(xpath = "/html/body/header/form/div[2]/div/button")
 	private WebElement viewBookmarkSubmitButton;
 	
-	@FindBy(id = "/html/body/header/table/tbody/tr/td[4]/button[1]")
+	@FindBy(xpath = "/html/body/header/table/tbody/tr/td[4]/button[1]")
 	private WebElement bookmarkEditButton;
 	
 	@FindBy(xpath = "/html/body/header/table/tbody/tr/td[1]/input")
@@ -38,10 +38,17 @@ public class ViewBookmarkPage {
 		this.viewBookmarkSubmitButton.click();
 	}
 		
-	public void editBookmark(String bookmarkName, String bookmarkDescription, String bookmarkUrl) {
-		this.bookmarkEditName.sendKeys(bookmarkName);
-		this.bookmarkEditName.sendKeys(bookmarkDescription);
-		this.bookmarkEditName.sendKeys(bookmarkUrl);
+	public void editBookmark() {
+		this.bookmarkEditButton.click();
+	}
+	
+	public void saveEditedBookmark(String editedBookmarkName, String editedBookmarkDescription, String editedBookmarkUrl) {
+		this.bookmarkEditName.clear();
+		this.bookmarkEditDescription.clear();
+		this.bookmarkEditUrl.clear();
+		this.bookmarkEditName.sendKeys(editedBookmarkName);
+		this.bookmarkEditDescription.sendKeys(editedBookmarkDescription);
+		this.bookmarkEditUrl.sendKeys(editedBookmarkUrl);
 		this.bookmarkSaveEditButton.click();
 	}
 	

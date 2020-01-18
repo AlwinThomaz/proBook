@@ -12,10 +12,10 @@ public class ViewTypePage {
 	@FindBy(xpath = "/html/body/header/table/tbody/tr/td[1]/input")
 	private WebElement typeEditName;
 	
-	@FindBy(xpath = "/html/body/header/table/tbody/tr[1]/td[2]/button[2]")
+	@FindBy(xpath = "/html/body/header/table/tbody/tr/td[2]/button[2]")
 	private WebElement typeSaveEditButton;
 	
-	@FindBy(xpath = "/html/body/header/table/tbody/tr[1]/td[2]/button[3]")
+	@FindBy(xpath = "/html/body/header/table/tbody/tr/td[2]/button[3]")
 	private WebElement typeDeleteButton;
 	
 	public void editType() {
@@ -23,7 +23,7 @@ public class ViewTypePage {
 	}
 	
 	
-	public void saveEditType(String editedTypeName) {
+	public void saveEditedType(String editedTypeName) {
 		this.typeEditName.clear();
 		this.typeEditName.sendKeys(editedTypeName);
 		this.typeSaveEditButton.click();
