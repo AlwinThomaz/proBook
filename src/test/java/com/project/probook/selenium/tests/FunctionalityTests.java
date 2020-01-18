@@ -59,10 +59,6 @@ public class FunctionalityTests {
 		this.destination = Constants.HOST;
 	}
 	
-//	@After
-//    public void tearDown() throws Exception {
-//        this.driver.close();
-//    }
 
 	@Test
 	public void allFunctionalityTest() throws InterruptedException {
@@ -102,6 +98,7 @@ public class FunctionalityTests {
 		Thread.sleep(2000);
 
 		this.driver.get(this.destination + Constants.VIEW_TYPE);
+		Thread.sleep(2000);
 		this.viewTypePage.editType();
 		Thread.sleep(2000);
 		
