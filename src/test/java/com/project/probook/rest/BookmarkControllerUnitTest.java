@@ -16,9 +16,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.project.probook.exceptions.BookmarkDuplicateException;
+import com.project.probook.exceptions.BookmarkInvalidEntryException;
 import com.project.probook.exceptions.BookmarkNotFoundException;
 import com.project.probook.persistence.domain.Bookmark;
 import com.project.probook.service.BookmarkService;
+import com.project.probook.service.TypeService;
 
 
 @RunWith(SpringRunner.class)
@@ -30,6 +33,9 @@ public class BookmarkControllerUnitTest {
 
 	@Mock
 	private BookmarkService service;
+	
+	@Mock
+	private TypeService typeService;
 
 	private List<Bookmark> bookmarkList;
 
@@ -43,13 +49,13 @@ public class BookmarkControllerUnitTest {
 	public void init() {
 		this.bookmarkList = new ArrayList<>();
 		this.bookmarkList.add(testBookmark);
-		this.testBookmark = new Bookmark("Freecodecamp", "Place to discuss and learn coding", "https://www.freecodecamp.org");
+		this.testBookmark = new Bookmark("Freecodecamp", "Place to discuss and learn coding", "http://www.freecodecamp.org");
 		this.testBookmarkWithId = new Bookmark(testBookmark.getName(), testBookmark.getDescription(), testBookmark.getUrl());
 		this.testBookmarkWithId.setId(id);		
 	}
 
 	@Test
-	public void createBookmarkTest() {
+	public void createBookmarkTest() throws BookmarkInvalidEntryException, BookmarkDuplicateException {
 		when(this.service.createBookmark(testBookmark)).thenReturn(testBookmarkWithId);
 
 		assertEquals(this.testBookmarkWithId, this.controller.createBookmark(testBookmark));
@@ -67,7 +73,7 @@ public class BookmarkControllerUnitTest {
 	@Test
 	public void updateBookmarkTest() throws BookmarkNotFoundException {
 		
-		Bookmark newBookmark = new Bookmark("Udemy", "Java online course", "https://www.udemy.com/topic/java/");
+		Bookmark newBookmark = new Bookmark("Udemy", "Java online course", "http://www.udemy.com/topic/java/");
 		Bookmark updatedBookmark = new Bookmark(newBookmark.getName(), newBookmark.getDescription(), newBookmark.getUrl());
 		updatedBookmark.setId(this.id);
 
@@ -96,7 +102,6 @@ public class BookmarkControllerUnitTest {
 
 		verify(service, times(1)).readBookmarks();
 	}
-
 	
 }
 

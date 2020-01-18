@@ -16,6 +16,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.project.probook.exceptions.TypeDuplicateException;
+import com.project.probook.exceptions.TypeInvalidEntryException;
 import com.project.probook.exceptions.TypeNotFoundException;
 import com.project.probook.persistence.domain.Type;
 import com.project.probook.service.TypeService;
@@ -48,7 +50,7 @@ public class TypeControllerUnitTest {
 	}
 
 	@Test
-	public void createTypeTest() {
+	public void createTypeTest() throws TypeInvalidEntryException, TypeDuplicateException {
 		when(this.service.createType(testType)).thenReturn(testTypeWithId);
 
 		assertEquals(this.testTypeWithId, this.controller.createType(testType));

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>proBook Add Types Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/add_type.css">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md">
+        <a class="nav-link" href="index.html">proBook</a>
+        <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="main-navigation">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="add_type.html">Add Type</a></li>
+                <li class="nav-item"><a class="nav-link" href="add_bookmark2.html">Add Bookmark</a></li>
+                <li class="nav-item"><a class="nav-link" href="view_bookmark2.html">View Bookmarks</a></li>
+                <li class="nav-item"><a class="nav-link" href="view_type2.html">View
+                        Types</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header header container-fluid">
+        <div class="overlay"></div>
+
+        <h2>Add Type</h2>
+        <hr>
+        <div id="container">
+            <form id="createTypeForm">
+                <br>
+                <div>
+
+                    <label for="createType">Create Type:</label>
+                    <div>
+                        <input type="text" class="form-control" id="createType" required>
+                    </div>
+                    <br>
+                    <br>
+                    <div>
+                        <div>
+                            <button id="saveType" class="form-control" name="saveForm" type="button" value="Submit"
+                                onclick="createTypes();">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+    </header>
+
+
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="main.js"></script>
+    <script src="scripts/type_scripts.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</body>
+
+</html>

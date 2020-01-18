@@ -22,7 +22,7 @@ public class BookmarkRepoTest {
 	
 	private final String TEST_NAME = "Github";
 	
-	private final Bookmark TEST_BOOKMARK = new Bookmark(TEST_NAME, "Remote code storage repository", "https://github.com");
+	private final Bookmark TEST_BOOKMARK = new Bookmark(TEST_NAME, "Remote code storage repository", "http://www.github.com");
 	
 	private Bookmark testSavedBookmark;
 	

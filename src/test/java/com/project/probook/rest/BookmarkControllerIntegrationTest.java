@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +42,7 @@ public class BookmarkControllerIntegrationTest {
 	private Bookmark testBookmark;
 
 	private Bookmark testBookmarkWithId;
+	
 
 	@Before
 	public void init() {
@@ -53,10 +55,13 @@ public class BookmarkControllerIntegrationTest {
 
 	@Test
 	public void testCreateBookmark() throws Exception {
+		this.repo.deleteAll();
 		String result = this.mock
 				.perform(request(HttpMethod.POST, "/bookmark/createBookmark").contentType(MediaType.APPLICATION_JSON)
 						.content(this.mapper.writeValueAsString(testBookmark)).accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+//		testBookmarkWithId = repo.th();//TODO change id to that repo
+		testBookmarkWithId.setId(testBookmarkWithId.getId()+1);
 		assertEquals(this.mapper.writeValueAsString(testBookmarkWithId), result);
 	}
 
@@ -83,7 +88,7 @@ public class BookmarkControllerIntegrationTest {
 		updatedBookmark.setId(this.id);
 
 		String result = this.mock
-				.perform(request(HttpMethod.PUT, "/bookmark/updateBookmark/?id=" + this.id).accept(MediaType.APPLICATION_JSON)
+				.perform(request(HttpMethod.PUT, "/bookmark/updateBookmark?id=" + this.id).accept(MediaType.APPLICATION_JSON)
 						.contentType(MediaType.APPLICATION_JSON).content(this.mapper.writeValueAsString(newBookmark)))
 				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
 		

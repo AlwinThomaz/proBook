@@ -12,5 +12,6 @@ import com.project.probook.persistence.domain.Bookmark;
 public interface BookmarkRepo extends JpaRepository<Bookmark, Long> {
 	
 	List<Bookmark> findByName(String name);
+	
 
 }
