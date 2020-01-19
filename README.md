@@ -111,4 +111,4 @@ If you would like to clone a version version which does not contain selenium tes
 <a name ="acknowledgements"></a>
 ### Acknowledgements
 
-I would like to give a big thank you to all the instructors at QA and also to my fellow BAE cohorts for help in completing this project.
+I would like to give a big thank you to all the instructors at QA and also to my fellow BAE cohorts for all thier help and patience in completing this project.
