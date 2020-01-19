@@ -50,7 +50,7 @@ Project Planning was done through the use of [Trello](https://trello.com/b/IN6JK
 <a name="API"></a>
 ###  API Architecture
 
-![](./Documentation/Application_Architecture.png)
+![](./Documentation/application_architecture.png)
 
 
 <a name="technology"></a>
