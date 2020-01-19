@@ -36,12 +36,14 @@ Project Planning was done through the use of Trello, which contained
 
 <a name="ERDinitial"></a>
 ###  Entity Relationship Diagram Initial
+![](https://github.com/AlwinThomaz/proBook/blob/master/Documentation/Initial%20ERD.png)
 
 <a name="ERDfinal"></a>
 ###  Entity Relationship Diagram Final
+![](https://github.com/AlwinThomaz/proBook/blob/master/Documentation/Final%20ERD.png)
 
 <a name="API"></a>
-###  API Structure
+###  API Architecture
 
 ![](https://github.com/AlwinThomaz/proBook/blob/master/Documentation/Application%20Architecture.png)
 
@@ -70,9 +72,9 @@ A Surefire report was generated.
 
 
 <a name="coverage"></a>
-###  Testing Coverage
+###  Test Coverage
 
-![](https://raw.githubusercontent.com/AlwinThomaz/proBook/blob/master/Documentation/Back-End%20Coverage.png)
+![](https://github.com/AlwinThomaz/proBook/blob/master/Documentation/Back-End%20Coverage.png)
 
 <a name="guide"></a>
 ## User Guide
