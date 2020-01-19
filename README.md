@@ -76,7 +76,7 @@ A Surefire report was generated.
 <a name="coverage"></a>
 ###  Test Coverage
 
-![](https://github.com/AlwinThomaz/proBook/blob/master/Documentation/Back-End%20Coverage.png)
+![] (https://github.com/AlwinThomaz/proBook/blob/master/Documentation/Back-End%20Coverage.png)
 
 <a name="guide"></a>
 ## User Guide
