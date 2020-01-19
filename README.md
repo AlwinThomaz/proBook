@@ -84,7 +84,7 @@ A Surefire report was generated.
 <a name="demo"></a>
 ### Demo
 
-![] (https://github.com/AlwinThomaz/proBook/blob/master/Documentation/ProBook%20Demo.gif)
+![] (./Documentation/ProBookDemo.gif)
 
 <a name ="usage"></a>
 ### Usage
