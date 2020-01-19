@@ -67,7 +67,7 @@ Back-End : JUnit and Mockito
 Front-End :  Selenium 
 
 A static report was generated using Sonarqube.    
-[Static report](./Documentation/SonarQube_Report.png)  
+[Static report](./Documentation/sonar_qube_report.png)  
 
 A Surefire report was generated.    
 [Surefire report](./Documentation/Surefire_Report_proBook.pdf)
@@ -76,7 +76,7 @@ A Surefire report was generated.
 <a name="coverage"></a>
 ###  Test Coverage
 
-![](./Documentation/Back_End_Coverage.png)
+![](./Documentation/back_end-coverage.png)
 
 <a name="guide"></a>
 ## User Guide
