@@ -5,7 +5,7 @@
 * [Project Overview](#overview)
     * [Task](#task)
     * [Solution](#concept)
-    * [Project Planning] (#projectplan)
+    * [Project Planning](#projectplan)
 * [The Architecture](#architecture)
     * [Entity Relationship Diagram](#ERD)
     * [API structure](#API)
@@ -79,5 +79,5 @@ A Surefire report was generated.
 <a name="demo"></a>
 ### Demo
 
-<a name ="Cloning and Usage Instructions"></a>
-### usage
+<a name ="usage"></a>
+### Usage
