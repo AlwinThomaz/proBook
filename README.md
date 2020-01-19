@@ -14,18 +14,20 @@
 * [Testing](#testing)
     * [Coverage](#coverage)
 * [User Guide](#guide)
-    *[Demo](#demo)
-    *[Cloning and Usage Instructions](#usage)
+    * [Demo](#demo)
+    * [Usage](#usage)
 
 <a name="overview"></a>
 ## Project Overview
+A software based bookmark storage application.
 
 <a name="task"></a>
 ### Task
-To create an OOP-based application with utilisation
+To create an OOP-based application with utilisation of supporting tools, methodologies and technologies that encapsulate all core modules covered during training.
 
 <a name="solution"></a>
 ### Solution
+Application that stores bookmarks based upon the type of resource the bookmark correlates to. The bookmark contains a name, description & url, the type has a name, all of which are editable.
 
 <a name="projectplan"></a>
 ### Project Planning
@@ -81,6 +83,8 @@ A Surefire report was generated.
 
 <a name="demo"></a>
 ### Demo
+
+![] (https://github.com/AlwinThomaz/proBook/blob/master/Documentation/ProBook%20Demo.gif)
 
 <a name ="usage"></a>
 ### Usage
