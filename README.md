@@ -76,7 +76,7 @@ A Surefire report was generated.
 <a name="coverage"></a>
 ###  Test Coverage
 
-![](./Documentation/back_end-coverage.png)
+![](./Documentation/back_end_coverage.png)
 
 <a name="guide"></a>
 ## User Guide
