@@ -22,14 +22,14 @@
 
 <a name="task"></a>
 ### Task
+To create an OOP-based application with utilisation
 
 <a name="solution"></a>
 ### Solution
 
 <a name="projectplan"></a>
 ### Project Planning
-Project Planning was done through the use of Trello, which contained 
-[Trello Board](https://trello.com/b/IN6JKwPY/probook)
+Project Planning was done through the use of [Trello](https://trello.com/b/IN6JKwPY/probook), which contains wireframes, user stories, acceptance criteria and user estimates. The user stories were tagged using a variation of the  MoSCoW method known as the traffic light system with Red = Must, Orange = Should & Green = Could.  
 
 <a name="architecture"></a>
 ## The Architecture
