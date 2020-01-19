@@ -64,7 +64,7 @@ Project Planning was done through the use of [Trello](https://trello.com/b/IN6JK
 ## Testing
 
 <a name="testreports"></a>
-## Test Reports
+### Test Reports
 
 Back-End : JUnit and Mockito 
 Front-End :  Selenium 
