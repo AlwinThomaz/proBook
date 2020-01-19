@@ -76,7 +76,7 @@ A Surefire report was generated.
 <a name="coverage"></a>
 ###  Test Coverage
 
-![] (./Documentation/Back_End_Coverage.png)
+![](./Documentation/Back_End_Coverage.png)
 
 <a name="guide"></a>
 ## User Guide
@@ -84,7 +84,7 @@ A Surefire report was generated.
 <a name="demo"></a>
 ### Demo
 
-![] (./Documentation/ProBook_Demo.gif)
+![](./Documentation/ProBook_Demo.gif)
 
 <a name ="usage"></a>
 ### Usage
