@@ -30,7 +30,7 @@
 [Trello Board](link here)
 
 <a name="architecture"></a>
-##The Architecture
+## The Architecture
 
 <a name="ERD"></a>
 ###  Entity Relationship Diagram
