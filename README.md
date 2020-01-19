@@ -7,7 +7,8 @@
     * [Solution](#concept)
     * [Project Planning](#projectplan)
 * [The Architecture](#architecture)
-    * [Entity Relationship Diagram](#ERD initial)
+    * [Entity Relationship Diagram Initial](#ERDinitial)
+    * [Entity Relationship Diagram Initial](#ERDinitial)
     * [API structure](#API)
 * [The Technology](#technology)
 * [Testing](#testing)
@@ -33,24 +34,23 @@ Project Planning was done through the use of Trello, which contained
 <a name="architecture"></a>
 ## The Architecture
 
-<a name="ERD initial"></a>
+<a name="ERDinitial"></a>
 ###  Entity Relationship Diagram Initial
 
-<a name="ERD final"></a>
+<a name="ERDfinal"></a>
 ###  Entity Relationship Diagram Final
 
 <a name="API"></a>
 ###  API Structure
 
-![](https://raw.githubusercontent.com/AlwinThomaz/proBook/blob/master/Documentation/Application%20Architecture.png)
+![](https://github.com/AlwinThomaz/proBook/blob/master/Documentation/Application%20Architecture.png)
 
 
 <a name="technology"></a>
 ## Development Technology
 
 
-![](https://raw.githubusercontent.com/AlwinThomaz/proBook/blob/master/Documentation/Development%20Technologies.png)
-
+![]https://github.com/AlwinThomaz/proBook/blob/master/Documentation/Development%20Technologies.png)
 
 
 <a name="testing"></a>
