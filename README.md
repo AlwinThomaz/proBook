@@ -16,10 +16,12 @@
 * [User Guide](#guide)
     * [Demo](#demo)
     * [Usage](#usage)
+* [Future Upgrades](#upgrades)
+* [Acknowledgements](#acknowledgements)
 
 <a name="overview"></a>
 ## Project Overview
-A software based bookmark storage application.
+A software related bookmark storage application.
 
 <a name="task"></a>
 ### Task
@@ -83,8 +85,29 @@ A Surefire report was generated.
 
 <a name="demo"></a>
 ### Demo
+See the gif below for a demonstration ono how to use the app.
 
 ![](./Documentation/ProBook_Demo.gif)
 
 <a name ="usage"></a>
 ### Usage
+
+The application is compatible to run on any major browser whether on desktop or mobile.
+
+If you would like to clone and have a play around with it, please note the following:
+
+The master branch contains selenium tests, which require a mac chrome driver (version 79) with a chrome browser (version 79) to pass the selenium tests.
+
+If you would like to clone a version version which does not contain selenium tests please clone the 'dev_non-selenium' branch.
+
+<a name ="upgrades"></a>
+### Future Upgrades
+* Log-In System
+* Make URL's a clickable link
+* Incorporate a folder system
+* More user validation
+
+<a name ="acknowledgements"></a>
+### Acknowledgements
+
+I would like to give a big thank you to all the instructors at QA and also to my fellow BAE cohorts for help in completing this project.
