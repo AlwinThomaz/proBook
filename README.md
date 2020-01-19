@@ -38,23 +38,23 @@ Project Planning was done through the use of [Trello](https://trello.com/b/IN6JK
 
 <a name="ERDinitial"></a>
 ###  Entity Relationship Diagram Initial
-![](https://github.com/AlwinThomaz/proBook/blob/master/Documentation/Initial%20ERD.png)
+![](./Documentation/Initial_ERD.png)
 
 <a name="ERDfinal"></a>
 ###  Entity Relationship Diagram Final
-![](https://github.com/AlwinThomaz/proBook/blob/master/Documentation/Final%20ERD.png)
+![](./Documentation/Final_ERD.png)
 
 <a name="API"></a>
 ###  API Architecture
 
-![](https://github.com/AlwinThomaz/proBook/blob/master/Documentation/Application%20Architecture.png)
+![](./Documentation/Application_Architecture.png)
 
 
 <a name="technology"></a>
 ## Development Technology
 
 
-![](https://github.com/AlwinThomaz/proBook/blob/master/Documentation/Development%20Technologies.png)
+![](./Documentation/Development_Technologies.png)
 
 
 <a name="testing"></a>
@@ -67,16 +67,16 @@ Back-End : JUnit and Mockito
 Front-End :  Selenium 
 
 A static report was generated using Sonarqube.    
-[Static report](https://github.com/AlwinThomaz/proBook/blob/master/Documentation/SonarQube%20Report.png)  
+[Static report](./Documentation/SonarQube_Report.png)  
 
 A Surefire report was generated.    
-[Surefire report](https://github.com/AlwinThomaz/proBook/blob/master/Documentation/Surefire%20Report%20proBook.pdf)
+[Surefire report](./Documentation/Surefire_Report_proBook.pdf)
 
 
 <a name="coverage"></a>
 ###  Test Coverage
 
-![] (https://github.com/AlwinThomaz/proBook/blob/master/Documentation/Back-End%20Coverage.png)
+![] (./Documentation/Back_End_Coverage.png)
 
 <a name="guide"></a>
 ## User Guide
@@ -84,7 +84,7 @@ A Surefire report was generated.
 <a name="demo"></a>
 ### Demo
 
-![] (./Documentation/ProBookDemo.gif)
+![] (./Documentation/ProBook_Demo.gif)
 
 <a name ="usage"></a>
 ### Usage
