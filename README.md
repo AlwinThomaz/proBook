@@ -99,7 +99,7 @@ If you would like to clone and have a play around with it, please note the follo
 
 The master branch contains selenium tests, which require a mac chrome driver (version 79) with a chrome browser (version 79) to pass the selenium tests.
 
-If you would like to clone a version version which does not contain selenium tests please clone the 'dev_non-selenium' branch.
+If you would like to clone a version version which has the selenium tests commented out, please clone the 'master_non_selenium' branch.
 
 <a name ="upgrades"></a>
 ### Future Upgrades
