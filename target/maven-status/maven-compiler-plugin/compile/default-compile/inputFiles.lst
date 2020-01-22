@@ -1,0 +1,15 @@
+/home/qa-admin/git/proBook/src/main/java/com/project/probook/exceptions/TypeInvalidEntryException.java
+/home/qa-admin/git/proBook/src/main/java/com/project/probook/exceptions/BookmarkDuplicateException.java
+/home/qa-admin/git/proBook/src/main/java/com/project/probook/persistence/domain/Bookmark.java
+/home/qa-admin/git/proBook/src/main/java/com/project/probook/exceptions/TypeNotFoundException.java
+/home/qa-admin/git/proBook/src/main/java/com/project/probook/persistence/repo/BookmarkRepo.java
+/home/qa-admin/git/proBook/src/main/java/com/project/probook/service/BookmarkService.java
+/home/qa-admin/git/proBook/src/main/java/com/project/probook/persistence/domain/Type.java
+/home/qa-admin/git/proBook/src/main/java/com/project/probook/persistence/repo/TypeRepo.java
+/home/qa-admin/git/proBook/src/main/java/com/project/probook/exceptions/BookmarkNotFoundException.java
+/home/qa-admin/git/proBook/src/main/java/com/project/probook/rest/BookmarkController.java
+/home/qa-admin/git/proBook/src/main/java/com/project/probook/ProBookApplication.java
+/home/qa-admin/git/proBook/src/main/java/com/project/probook/exceptions/BookmarkInvalidEntryException.java
+/home/qa-admin/git/proBook/src/main/java/com/project/probook/rest/TypeController.java
+/home/qa-admin/git/proBook/src/main/java/com/project/probook/service/TypeService.java
+/home/qa-admin/git/proBook/src/main/java/com/project/probook/exceptions/TypeDuplicateException.java
