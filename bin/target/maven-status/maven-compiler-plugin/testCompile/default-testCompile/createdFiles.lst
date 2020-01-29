@@ -1,0 +1,12 @@
+com/project/probook/selenium/pages/AddBookmarkPage.class
+com/project/probook/persistence/BookmarkRepoTest.class
+com/project/probook/selenium/pages/ViewBookmarkPage.class
+com/project/probook/selenium/pages/IndexPage.class
+com/project/probook/rest/TypeControllerUnitTest.class
+com/project/probook/selenium/pages/AddTypePage.class
+com/project/probook/selenium/pages/ViewTypePage.class
+com/project/probook/selenium/constants/Constants.class
+com/project/probook/service/TypeServiceUnitTest.class
+com/project/probook/rest/BookmarkControllerUnitTest.class
+com/project/probook/service/BookmarkServiceUnitTest.class
+com/project/probook/persistence/TypeRepoTest.class

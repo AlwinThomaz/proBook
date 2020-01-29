@@ -1,0 +1,15 @@
+com/project/probook/exceptions/BookmarkNotFoundException.class
+com/project/probook/persistence/repo/TypeRepo.class
+com/project/probook/ProBookApplication.class
+com/project/probook/persistence/repo/BookmarkRepo.class
+com/project/probook/service/TypeService.class
+com/project/probook/rest/BookmarkController.class
+com/project/probook/exceptions/BookmarkDuplicateException.class
+com/project/probook/exceptions/TypeDuplicateException.class
+com/project/probook/rest/TypeController.class
+com/project/probook/service/BookmarkService.class
+com/project/probook/exceptions/TypeNotFoundException.class
+com/project/probook/persistence/domain/Type.class
+com/project/probook/exceptions/TypeInvalidEntryException.class
+com/project/probook/exceptions/BookmarkInvalidEntryException.class
+com/project/probook/persistence/domain/Bookmark.class
