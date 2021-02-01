@@ -86,7 +86,7 @@ A Surefire report was generated.
 
 <a name="demo"></a>
 ### Demo
-See the gif below for a demonstration ono how to use the app.
+See the gif below for a demonstration on how to use the app.
 
 ![](./Documentation/ProBook_Demo.gif)
 
